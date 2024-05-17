@@ -12,4 +12,4 @@ FROM openjdk:21-jdk-slim
 COPY --from=build /target/siapweb-0.0.1-SNAPSHOT.jar siapweb.jar
 # ENV PORT=8080
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","siapweb.jar"]
+ENTRYPOINT ["java","-jar","siapweb.jar"]    

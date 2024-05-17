@@ -28,9 +28,16 @@ public class NavigationController {
     }
 
 
-    @GetMapping("/typedocument")
+    /*@GetMapping("/typedocument")
     public String getTypeDocument(Model model){
         //model.addAttribute("activePage", "maintainMenu");
         return "typedocument";
+    }*/
+
+
+    @GetMapping("/controlSystem")
+    public String getControlSystem(Model model){
+        //model.addAttribute("activePage", "maintainMenu");
+        return "controlSystem";
     }
 }
