@@ -83,6 +83,7 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<addResources>true</addResources>  <!--to live reolad html pages-->
 				</configuration>
 			</plugin>
 		</plugins>
