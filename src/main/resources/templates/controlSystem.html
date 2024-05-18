@@ -28,86 +28,94 @@
                     
                 </div>-->
             </div> 
-            <form class="needs-validation" novalidate>
-                <div class="form-row">
-                  <div class="col-md-4 mb-3">
-                    <label for="validationCustom01">Codigo</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Codigo" value="" required>
-                    <div class="valid-feedback">
-                      Ingrese código
-                    </div>
-                  </div>
-
-
+            <form>
+              <div class="form-row">
+                <div class="form-group  col-md-6">
+                  <label for="inputEmail4">Nombre</label>
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="Nombre">
                 </div>
-                <div class="form-row">
-                  <div class="col-md-6 mb-3">
-                    <label for="validationCustom03">Descripcion</label>
-                    <input type="text" class="form-control" id="validationCustom03" placeholder="Descripcion" required>
-                    <div class="invalid-feedback">
-                      Please provide a valid city.
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-3">
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Departamento</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Departamento...</option>
+                    <option>...</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputAddress">  Direccion</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputAddress2">Provincia</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Provincia...</option>
+                    <option>...</option>
+                  </select>
+                </div>
+              </div> 
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputCity">Email</label>
+                  <input type="text" class="form-control" id="inputCity">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputState">Distrito</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Distrito...</option>
+                    <option>...</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputCity">Telefono(s)</label>
+                  <div class="form-row">
                     <div class="col">
-                      <label for="validationCustom04">Estado</label>
-                      <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" event="dropdown">
-                          Activo
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" id="dropdownelementActive" href="#">Activo</a>
-                          <a class="dropdown-item" id="dropdownelementInactive" href="#">Inactiva</a>
-                        </div>
-                      </div>
+                      <input type="text" class="form-control" id="inputCity" placeholder="Telefono 1">
                     </div>
+                    <div class="col">
+                      <input type="text" class="form-control" id="inputCity" placeholder="Telefono 2">
+                    </div> 
                   </div>
-
                 </div>
-
-                <row class="justify-content-center">
-                  <button class="btn btn-primary mx-4 my-3" type="submit">Agregar</button>
-                  <button class="btn btn-primary mx-4 my-3" type="submit">Modificar</button>  
-                  <button class="btn btn-primary mx-4 my-3" type="submit">Limpiar</button>
-                  <button class="btn btn-primary mx-4 my-3 btn btn-danger" type="button" th:onclick="|window.location.href='@{/maintainMenu}'|" data-mdb-ripple-init >Salir</button>
-                </row>
-                
-              </form>
+                <div class="form-group col-md-6">
+                  <label class="" for="gridCheck">
+                    RUC PSGI
+                  </label>
+                  <input class="form-control" type="text" id="gridCheck">                  
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputCity">Celular(es)</label>
+                  <div class="form-row">
+                    <div class="col">
+                      <input type="text" class="form-control" id="inputCity" placeholder="Celular 1">
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" id="inputCity" placeholder="Celular 2">
+                    </div> 
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-5">
+                  <button type="submit" class="btn btn-primary form-control">Actualizar</button>
+                </div>
+                <div class="col-md-5">
+                  <button type="button" class="btn btn-danger form-control" th:onclick="|window.location.href='@{/maintainMenu}'|">Cancelar</button>
+                </div>
+              </div>
+            </form>
                     
                 
 
 
-            </form>
+            
 
-            <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <th scope="col">Codigo</th>
-                    <th scope="col">Descripcion</th>
-                    <th scope="col">Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">DNI</th>
-                    <td>Documento Nacional de Identidad</td>
-                    <td>Activo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">CE</th>
-                    <td>Carnet de Extranjeria</td>
-                    <td>Activo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">PAS</th>
-                    <td>Pasaporte</td>
-                    <td>Activo</td>
-                  </tr>
-                  
-
-                  </tr>
-                </tbody>
-              </table>
+            
         
 
 
