@@ -27,16 +27,7 @@ public class TypeDocumentController {
 	}
 
 
-    @GetMapping("/typedocument")
-	public String getAllTypeDocument(Model model) {
-		List<TypeDocument> typeDocuments = typeDocumentService.getAllTypeDocuments();
-        model.addAttribute("typeDocuments", typeDocuments);
-		//typeDocuments.get(0).get
-//		ModelAndView m=new ModelAndView();
-//		m.setViewName("bookList");
-//		m.addObject("book",list);
-		return "/typedocument";
-	}
+    
 
 
     /*@GetMapping("/available_books")

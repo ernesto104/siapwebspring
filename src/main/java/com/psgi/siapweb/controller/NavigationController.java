@@ -1,12 +1,21 @@
 package com.psgi.siapweb.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.psgi.siapweb.domain.model.TypeDocument;
+import com.psgi.siapweb.domain.service.TypeDocumentService;
+
 
 @Controller
 public class NavigationController {
+
+    @Autowired
+    private TypeDocumentService typeDocumentService;
 
 
     @GetMapping("/info")
@@ -34,6 +43,16 @@ public class NavigationController {
         return "typedocument";
     }*/
 
+    @GetMapping("/typedocument")
+	public String getAllTypeDocument(Model model) {
+		List<TypeDocument> typeDocuments = typeDocumentService.getAllTypeDocuments();
+        model.addAttribute("typeDocuments", typeDocuments);
+		//typeDocuments.get(0).get
+//		ModelAndView m=new ModelAndView();
+//		m.setViewName("bookList");
+//		m.addObject("book",list);
+		return "/typedocument";
+	}
 
     @GetMapping("/controlSystem")
     public String getControlSystem(Model model){
