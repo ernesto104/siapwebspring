@@ -19,17 +19,19 @@ public class TypeDocumentController {
     @Autowired
     private TypeDocumentService typeDocumentService;
 
-
+	
     @PostMapping(value="/saveTypeDocument"/* , params="action=saveTypeDocument"*/)
-	public String saveTypeDocument(@ModelAttribute TypeDocument td) {
-		typeDocumentService.createTypeDocument(td);
+	public String saveTypeDocument(@ModelAttribute("typeDocument") TypeDocument typeDocument) { // Nombre de typeDocument como referencia
+		typeDocumentService.createTypeDocument(typeDocument);
 		return "redirect:/typedocument";
 	}
-
+	
 
 	@GetMapping("/typedocument")
 	public String getAllTypeDocument(Model model) {
 		List<TypeDocument> typeDocuments = typeDocumentService.getAllTypeDocuments();
+
+		model.addAttribute("typeDocument", new TypeDocument());
         model.addAttribute("typeDocuments", typeDocuments);
 		//typeDocuments.get(0).get
 //		ModelAndView m=new ModelAndView();

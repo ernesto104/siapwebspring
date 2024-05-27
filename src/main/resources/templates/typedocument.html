@@ -6,6 +6,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+  
     <link th:href="@{styles/main.css}" rel="stylesheet"/>
 </head>
 <body class="flex-column h-100">
@@ -28,11 +30,11 @@
                     
                 </div>-->
             </div> 
-            <form class="needs-validation" novalidate th:action="@{/saveTypeDocument}" method="post">
+            <form class="needs-validation"  th:action="@{/saveTypeDocument}" th:object="${typeDocument}" method="post">
                 <div class="form-row">
                   <div class="col-md-4 mb-3">
                     <label for="validationCustom01">Codigo</label>
-                    <input type="text" class="form-control" name="tipo_documento" placeholder="Codigo" value="" required>
+                    <input type="text" class="form-control  " name="tipo_documento" placeholder="Codigo" value="s" th:field="*{tipo_documento}" required>
                     <div class="valid-feedback">
                       Ingrese código
                     </div>
@@ -43,18 +45,18 @@
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
                     <label for="validationCustom03">Descripcion</label>
-                    <input type="text" class="form-control" name="descripcion" placeholder="Descripcion" required>
+                    <input type="text" class="form-control is-invalid" name="descripcion" placeholder="Descripcion" th:field="*{descripcion}" required>
                     <div class="invalid-feedback">
-                      Please provide a valid city.
+                      Por favor agrega una descripcion valida.
                     </div>
                   </div>
                   <div class="col-md-3 mb-3">
                     <div class="col">
                       <label for="validationCustom04">Estado</label>
                       <div class="span"></div>
-                      <select class="custom-select " aria-label="Default select example" name="estado">
-                        <option selected>Seleccionar Estado</option>
-                        <option value="Activo">Activo</option>
+                      <select class="custom-select " aria-label="Default select example" th:field="*{estado}">
+                        <!--<option selected>Seleccionar Estado</option> -->
+                        <option value="Activo" selected>Activo</option>
                         <option value="Inactivo">Inactivo</option>
                       </select>
                       <!--<div class="dropdown">
@@ -74,7 +76,7 @@
                 <row class="justify-content-center">
                   <button class="btn btn-primary mx-4 my-3" type="submit" >Agregar</button>
                   <button class="btn btn-primary mx-4 my-3" type="submit" th:formaction="@{/editTypeDocument}">Modificar</button>  
-                  <button class="btn btn-primary mx-4 my-3" type="submit" th:formaction="@{/cancelEditDocument}">Limpiar</button>
+                  <button class="btn btn-primary mx-4 my-3" type="button" th:formaction="@{/cancelTypeDocument}" id="btn-limpiar">Limpiar</button>
                   <button class="btn btn-primary mx-4 my-3 btn btn-danger" type="button" th:onclick="|window.location.href='@{/maintainMenu}'|" data-mdb-ripple-init >Salir</button>
                 </row>
                 
@@ -86,7 +88,7 @@
             </form>
 
             
-              <table class="table">
+              <table class="table table-hover" id="table">
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">Codigo</th>
@@ -95,18 +97,36 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr th:each="typeDocument: ${typeDocuments}">
-                      <th scope="row" th:text= "${typeDocument.tipo_documento}"></th>
-                      <td th:text= "${typeDocument.descripcion}"> </td>
-                      <td th:text= "${typeDocument.estado}"> </td>
+                    <tr th:each="td: ${typeDocuments}">
+                      <th scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" name="exampleRadios" id="customCheck1" th:onclick="|fillform('${td.id}')|">
+                          <label class="form-check-label" for="customCheck1" th:text= " ${td.tipo_documento}">PAS</label>
+                        </div>
+                      </th>
+                      <td th:text= "${td.descripcion}" th:attr="id=${td.id}" th:value="${td.id}"> </td>
+                      <td th:text= "${td.descripcion}" th:attr="id=${td.id}" th:value="${td.id}"> </td>
+                      <td th:text= "${td.estado}"> 
+                        
+                      </td>
                     </tr>
                     <tr>
-                      <th scope="row">CE</th>
+                      <th scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios" >
+                          <label class="form-check-label" for="customCheck2">CE</label>
+                        </div>
+                      </th>
                       <td>Carnet de Extranjeria</td>
                       <td>Activo</td>
                     </tr>
                     <tr>
-                      <th scope="row">PAS</th>
+                      <th scope="row">
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" id="customCheck3" name="exampleRadios">
+                          <label class="form-check-label" for="customCheck3">PAS</label>
+                        </div>
+                      </th>
                       <td>Pasaporte</td>
                       <td>Activo</td>
                     </tr>
@@ -133,9 +153,54 @@
 <script
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js">
 </script>
+
+
+
+
+
+
+
 <!-- Bootstrap JS -->
 <script>
-  $().dropdown('update', function() {})
+  //$().dropdown('update', function() {})
+
+    
+      document.getElementById("btn-limpiar").addEventListener('click', function () {
+          var idTypeDocument = /*[[${message}]]*/ "";
+          var typeDocument = document.getElementById('tipo_documento');
+          typeDocument.value = '';
+          
+          var descripcion = document.getElementById('descripcion');
+          descripcion.value = '';
+
+          var estado = document.getElementById('estado');
+          estado.value = 'Activo';
+      });
+
+
+     
+
+// to Fill the form with datatable
+    var table = document.getElementById('table');
+                
+                for(var i = 1; i < table.rows.length; i++)
+                {
+                    table.rows[i].onclick = function()
+                    {
+                         //rIndex = this.rowIndex;
+                         document.getElementById("tipo_documento").value = this.cells[0].innerHTML;
+                         document.getElementById("descripcion").value = this.cells[1].innerHTML;
+                         document.getElementById("estado").value = this.cells[2].innerHTML;
+                         console.log(this.cells[0].rows[0])
+                    };
+                }
+  
+    // to click in anypplace to select rowtable            
+    $('.table tbody tr').click(function(event) {
+        if (event.target.type !== 'radio') {
+           $(':radio', this).trigger('click');
+                    }
+      });
 </script>
 </body>
 </html>
