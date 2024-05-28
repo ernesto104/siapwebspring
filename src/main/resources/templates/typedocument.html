@@ -75,8 +75,8 @@
 
                 <row class="justify-content-center">
                   <button class="btn btn-primary mx-4 my-3" type="submit" >Agregar</button>
-                  <button class="btn btn-primary mx-4 my-3" type="submit" th:formaction="@{/editTypeDocument}">Modificar</button>  
-                  <button class="btn btn-primary mx-4 my-3" type="button" th:formaction="@{/cancelTypeDocument}" id="btn-limpiar">Limpiar</button>
+                  <button class="btn btn-primary mx-4 my-3" type="submit" th:formaction="@{/editTypeDocument}" id="btn-modificar-doc" disabled>Modificar</button>  
+                  <button class="btn btn-primary mx-4 my-3" type="button" th:formaction="@{/cancelTypeDocument}" id="btn-limpiar" >Limpiar</button>
                   <button class="btn btn-primary mx-4 my-3 btn btn-danger" type="button" th:onclick="|window.location.href='@{/maintainMenu}'|" data-mdb-ripple-init >Salir</button>
                 </row>
                 
@@ -88,47 +88,46 @@
             </form>
 
             
-              <table class="table table-hover" id="table">
+              <table class="table table-hover " id="table">
                   <thead class="thead-dark">
-                    <tr>
-                      <th scope="col">Codigo</th>
-                      <th scope="col">Descripcion</th>
-                      <th scope="col">Estado</th>
+                    <tr >
+                      <th scope="col" >Codigo</th>
+                      <th scope="col" >Descripcion</th>
+                      <th scope="col" class="col-1">Estado</th>
+                      <th scope="col"  class="col-1"></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr th:each="td: ${typeDocuments}">
-                      <th scope="row">
-                        <div class="form-check">
-                          <input type="radio" class="form-check-input" name="exampleRadios" id="customCheck1" th:onclick="|fillform('${td.id}')|">
-                          <label class="form-check-label" for="customCheck1" th:text= " ${td.tipo_documento}">PAS</label>
-                        </div>
-                      </th>
-                      <td th:text= "${td.descripcion}" th:attr="id=${td.id}" th:value="${td.id}"> </td>
+                      <th scope="row" th:text= " ${td.tipo_documento}">>PAS</th>
                       <td th:text= "${td.descripcion}" th:attr="id=${td.id}" th:value="${td.id}"> </td>
                       <td th:text= "${td.estado}"> 
-                        
+                      <td>
+                          <div class="form-check">
+                            <input type="radio" class="form-check-input" name="exampleRadios" th:value="${td.id}" th:onclick="">
+                          </div>
+                      </td>  
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">
-                        <div class="form-check">
-                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios" >
-                          <label class="form-check-label" for="customCheck2">CE</label>
-                        </div>
-                      </th>
+                      <th scope="row">CE</th>
                       <td>Carnet de Extranjeria</td>
                       <td>Activo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
+                      <td>
                         <div class="form-check">
-                          <input type="radio" class="form-check-input" id="customCheck3" name="exampleRadios">
-                          <label class="form-check-label" for="customCheck3">PAS</label>
+                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios" >
                         </div>
-                      </th>
+                      </td>
+                    </tr>
+                    <tr >
+                      <th scope="row">PAS</th>
                       <td>Pasaporte</td>
                       <td>Activo</td>
+                      <td>
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
+                        </div>
+                      </td>
                     </tr>
                     
 
@@ -175,9 +174,24 @@
 
           var estado = document.getElementById('estado');
           estado.value = 'Activo';
-      });
 
+          document.getElementById("btn-modificar-doc").disabled=true;
 
+          var ele = document.getElementsByName("exampleRadios");
+
+          /*if(typeof index !== "undefined"){
+                           table.rows[index].classList.toggle("table-active");
+          }*/
+
+          for(var i=0;i<ele.length;i++)
+              ele[i].checked = false;
+
+          
+                });
+
+          
+
+                
      
 
 // to Fill the form with datatable
@@ -191,14 +205,38 @@
                          document.getElementById("tipo_documento").value = this.cells[0].innerHTML;
                          document.getElementById("descripcion").value = this.cells[1].innerHTML;
                          document.getElementById("estado").value = this.cells[2].innerHTML;
-                         console.log(this.cells[0].rows[0])
+                         //console.log(this.cells[3].innerHTML)
+
+                         document.getElementById("btn-modificar-doc").disabled=false;
+
+
+                         // remove the background from the previous selected row
+                        /*if(typeof index !== "undefined"){
+                           table.rows[index].classList.toggle("table-active");
+                        }
+
+                        console.log(typeof index);
+                        // get the selected row index
+                        index = this.rowIndex;
+                        // add class selected to the row
+                        this.classList.toggle("table-active");
+                        console.log(typeof index);*/
                     };
                 }
   
+
+    $(document).ready(function(){
+        $('.table tbody tr').click(function(){
+            $(this).toggleClass("table-active");
+        });
+    });
+
+
     // to click in anypplace to select rowtable            
     $('.table tbody tr').click(function(event) {
         if (event.target.type !== 'radio') {
            $(':radio', this).trigger('click');
+           //$(this).toggleClass("table-active");
                     }
       });
 </script>

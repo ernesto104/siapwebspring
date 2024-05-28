@@ -13,6 +13,8 @@ public interface TypeDocumentService {
 
     TypeDocument createTypeDocument(TypeDocument typeDocument);
 
+    TypeDocument editTypeDocumentById(Long id_documento, TypeDocument typeDocument);
+
     void deleteTypeDocument(Long id_documento);
     //ResponseEntity<?> deleteTypeDocument(Long departmentId);
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.psgi.siapweb.domain.model.TypeDocument;
 import com.psgi.siapweb.domain.service.TypeDocumentService;
@@ -40,6 +41,13 @@ public class TypeDocumentController {
 		return "typedocument";
 	}
 
+
+	@PostMapping(value="/editTypeDocument/{idTP}"/* , params="action=saveTypeDocument"*/)
+	public String editypeDocument(@RequestParam Long id_documento ,@ModelAttribute("typeDocument") TypeDocument typeDocument) { // Nombre de typeDocument como referencia
+		typeDocumentService.editTypeDocumentById(id_documento,typeDocument);
+		return "redirect:/typedocument";
+	}
+	
 
     /*@GetMapping("/available_books")
 	public ModelAndView getAllTypeDocument() {
