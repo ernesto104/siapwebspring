@@ -17,7 +17,7 @@ public class TypeDocumentServiceImpl implements TypeDocumentService {
     private TypeDocumentRepository typeDocumentRepository;
 
     @Override
-    public TypeDocument getTypeDocumentById(Long id_documento) {
+    public TypeDocument getTypeDocumentById(int id_documento) {
         // TODO Auto-generated method stub
         return typeDocumentRepository.findById(id_documento).get();
         //throw new UnsupportedOperationException("Unimplemented method 'getTypeDocumentById'");
@@ -38,10 +38,25 @@ public class TypeDocumentServiceImpl implements TypeDocumentService {
     }
 
     @Override
-    public void deleteTypeDocument(Long id_documento) {
+    public void deleteTypeDocument(int id_documento) {
         // TODO Auto-generated method stub
         typeDocumentRepository.deleteById(id_documento);
         //throw new UnsupportedOperationException("Unimplemented method 'deleteTypeDocument'");
+    }
+
+    @Override
+    public TypeDocument editTypeDocumentById(int id_documento, TypeDocument typeDocument) {
+        // TODO Auto-generated method stub
+
+        
+
+        if(typeDocumentRepository.existsById(id_documento)) {
+            TypeDocument typeDocumentexits = typeDocumentRepository.findById(id_documento).get();
+
+            typeDocumentexits = typeDocument;
+            return typeDocumentRepository.save(typeDocumentexits);
+        }
+        throw new UnsupportedOperationException("Unimplemented method 'editTypeDocumentById'");
     }
 
 }

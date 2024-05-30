@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +25,7 @@ public class TypeDocumentController {
     @PostMapping(value="/saveTypeDocument"/* , params="action=saveTypeDocument"*/)
 	public String saveTypeDocument(@ModelAttribute("typeDocument") TypeDocument typeDocument) { // Nombre de typeDocument como referencia
 		typeDocumentService.createTypeDocument(typeDocument);
-		return "redirect:/typedocument";
+		return "typedocument";
 	}
 	
 
@@ -42,12 +43,28 @@ public class TypeDocumentController {
 	}
 
 
-	@PostMapping(value="/editTypeDocument/{idTP}"/* , params="action=saveTypeDocument"*/)
-	public String editypeDocument(@RequestParam Long id_documento ,@ModelAttribute("typeDocument") TypeDocument typeDocument) { // Nombre de typeDocument como referencia
-		typeDocumentService.editTypeDocumentById(id_documento,typeDocument);
-		return "redirect:/typedocument";
+	@GetMapping("/editTypeDocument/{id}"/* , params="action=saveTypeDocument"*/)
+	public String editypeDocument(@PathVariable  int id ,Model model/* , @ModelAttribute("typeDocument") TypeDocument typeDocumentData*/) { // Nombre de typeDocument como referencia
+		
+		
+		//TypeDocument typeDocument=typeDocumentService.editTypeDocumentById(id_documento,typeDocumentData);
+
+		TypeDocument typeDocument=typeDocumentService.getTypeDocumentById(id);
+		model.addAttribute("typeDocument", typeDocument);
+		return "typedocument_copy";
 	}
 	
+
+	@PostMapping("/editSaveTypeDocument/{id}"/* , params="action=saveTypeDocument"*/)
+	public String editypeDocumentSave(@PathVariable  int id , @ModelAttribute("typeDocument") TypeDocument typeDocumentData) { // Nombre de typeDocument como referencia
+		
+		
+		typeDocumentService.editTypeDocumentById(id,typeDocumentData);
+
+		//TypeDocument typeDocument=typeDocumentService.getTypeDocumentById(id);
+		//model.addAttribute("typeDocument", typeDocument);
+		return "typedocument";
+	}
 
     /*@GetMapping("/available_books")
 	public ModelAndView getAllTypeDocument() {

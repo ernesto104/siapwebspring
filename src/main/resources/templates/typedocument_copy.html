@@ -8,7 +8,7 @@
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
   
-    <link th:href="@{styles/main.css}" rel="stylesheet"/>
+    <link th:href="@{typedocument_copy/styles/main.css}" rel="stylesheet"/>
 </head>
 <body class="flex-column h-100">
 
@@ -34,7 +34,6 @@
                 <div class="form-row">
                   <div class="col-md-4 mb-3">
                     <label for="validationCustom01">Codigo</label>
-                    <input  type="text" class="form-control  " name="tipo_documento" placeholder="Codigo" value="s" th:field="*{id}" required>
                     <input type="text" class="form-control  " name="tipo_documento" placeholder="Codigo" value="s" th:field="*{tipo_documento}" required>
                     <div class="valid-feedback">
                       Ingrese código
@@ -76,7 +75,7 @@
 
                 <row class="justify-content-center">
                   <button class="btn btn-primary mx-4 my-3" type="submit" >Agregar</button>
-                  <button class="btn btn-primary mx-4 my-3" type="button" th:onclick="|window.location.href='@{/editSaveTypeDocument/} + ${typeDocument.id}'|" id="btn-modificar-doc" disabled>Modificar</button>  
+                  <button class="btn btn-primary mx-4 my-3" type="submit" th:formaction="@{/editSaveTypeDocument/} + ${typeDocument.id}" id="btn-modificar-doc" disabled>Modificar</button>  
                   <button class="btn btn-primary mx-4 my-3" type="button" th:formaction="@{/cancelTypeDocument}" id="btn-limpiar" >Limpiar</button>
                   <button class="btn btn-primary mx-4 my-3 btn btn-danger" type="button" th:onclick="|window.location.href='@{/maintainMenu}'|" data-mdb-ripple-init >Salir</button>
                 </row>
@@ -106,7 +105,6 @@
                       <td>
                           <div class="form-check">
                             <input type="radio" class="form-check-input" name="exampleRadios" th:value="${td.id}" th:onclick="">
-                            <a th:href='@{/editTypeDocument/} + ${td.id}' class="btn btn-info">Editar</a>
                           </div>
                       </td>  
                       </td>
@@ -213,8 +211,7 @@
                          document.getElementById("tipo_documento").value = this.cells[0].innerHTML;
                          document.getElementById("descripcion").value = this.cells[1].innerHTML;
                          document.getElementById("estado").value = this.cells[2].innerHTML;
-                         document.getElementById("id").value = this.cells[3].getElementsByTagName("input")[0].value;
-                         console.log(this.cells[3].getElementsByTagName("input")[0].value)
+                         //console.log(this.cells[3].innerHTML)
 
                          document.getElementById("btn-modificar-doc").disabled=false;
 
