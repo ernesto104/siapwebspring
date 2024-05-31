@@ -48,4 +48,11 @@ public class NavigationController {
         //model.addAttribute("activePage", "maintainMenu");
         return "controlSystem";
     }
+
+
+    @GetMapping("/ubigeoPSGI")
+    public String getUbigeoPSGI(Model model){
+        //model.addAttribute("activePage", "info");
+        return "ubigeoPSGI";
+    }
 }

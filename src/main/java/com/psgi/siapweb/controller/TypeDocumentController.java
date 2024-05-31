@@ -25,7 +25,7 @@ public class TypeDocumentController {
     @PostMapping(value="/saveTypeDocument"/* , params="action=saveTypeDocument"*/)
 	public String saveTypeDocument(@ModelAttribute("typeDocument") TypeDocument typeDocument) { // Nombre de typeDocument como referencia
 		typeDocumentService.createTypeDocument(typeDocument);
-		return "typedocument";
+		return "redirect:/typedocument";
 	}
 	
 
@@ -51,7 +51,7 @@ public class TypeDocumentController {
 
 		TypeDocument typeDocument=typeDocumentService.getTypeDocumentById(id);
 		model.addAttribute("typeDocument", typeDocument);
-		return "typedocument_copy";
+		return "typedocument_edit";
 	}
 	
 
@@ -63,7 +63,7 @@ public class TypeDocumentController {
 
 		//TypeDocument typeDocument=typeDocumentService.getTypeDocumentById(id);
 		//model.addAttribute("typeDocument", typeDocument);
-		return "typedocument";
+		return "redirect:/typedocument";
 	}
 
     /*@GetMapping("/available_books")
