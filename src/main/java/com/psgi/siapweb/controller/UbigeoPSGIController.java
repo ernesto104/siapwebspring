@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UbigeoPSGIController {
 
 
-    /*@GetMapping("/ubigeoPSGI")
+    @GetMapping("/ubigeoPSGI")
     public String getUbigeoPSGI(Model model){
         //model.addAttribute("activePage", "info");
         return "ubigeoPSGI";
-    }*/
+    }
 
     /*@GetMapping({"/mainMenu"})
     public String getMainMenu(Model model){

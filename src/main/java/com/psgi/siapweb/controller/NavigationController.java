@@ -50,9 +50,5 @@ public class NavigationController {
     }
 
 
-    @GetMapping("/ubigeoPSGI")
-    public String getUbigeoPSGI(Model model){
-        //model.addAttribute("activePage", "info");
-        return "ubigeoPSGI";
-    }
+
 }
