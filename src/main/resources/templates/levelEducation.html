@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring MVC</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+  
+    <link th:href="@{styles/main.css}" rel="stylesheet"/>
+</head>
+<body class="flex-column h-100">
+
+<div th:replace="~{utils/header :: header}"></div>
+
+<main role="main" class="">
+    <div class="container-page align-items-center ">
+        <!--<div class="jumbotron">-->
+            <div class="container text-center" style="max-width: 500px;">
+                <!--<h1 class="display-4 ">Info</h1> --><!-- para padding boostrap ( class="pt-5")-->
+                <h1 class="display-5 ">Niveles Educativos</h1> <!--para margin boostrap  ( class="mt-5") (pero se le aplica a toda la hoja en general)-->
+            <!--</div>-->
+            
+            
+                <!--<div class="list-group list-group-light ">
+                 
+                    <a th:href="@{/maintainMenu}" class="list-group-item list-group-item-action px-5 border-4 rounded-3 my-3 list-group-item-danger">
+                    Salir del Sistema</a>
+                    
+                </div>-->
+            </div> 
+            <form class="needs-validation">
+
+                <div class="form-row  mt-5">
+                      <div class="col-md-8 mb-3">
+                        <label for="validationCustom04" class="mr-sm-3">Codigo :(*) </label>
+                        <input type="text"  class="form-control col-md-2 " id="tipo_documento" placeholder="Codigo" required>
+                      </div>
+                  </div>
+                  <div class="form-row">
+                    <div class=" col-md-6 mb-3">
+                      <label for="validationCustom04" class="mr-sm-4">Nivel Educativo:&nbsp;(*)</label>
+                      <input type="text"  class="form-control col-md-7 " id="descripcion" placeholder="Nivel Educativo" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustom04"  class="mr-sm-3">Estado (*)</label>
+                      <div class="span"></div>
+                      <select class="custom-select col-md-5" aria-label="Default select example" id="estado" required>
+                        <!--<option selected>Seleccionar Estado</option> -->
+                        <option value="Activo" selected>Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                      </select>
+
+                    
+                  </div>
+                </div>
+
+              
+
+                <row class="justify-content-center">
+                  <button class="btn btn-primary mx-4 my-3" type="submit" >Agregar</button>
+                  <button class="btn btn-primary mx-4 my-3" type="button" th:onclick="|window.location.href='@{/editTypeDocument/}'|" id="btn-modificar-doc" disabled>Modificar</button>  
+                  <button class="btn btn-primary mx-4 my-3" type="button" th:formaction="@{/cancelTypeDocument}" id="btn-limpiar" >Limpiar</button>
+                  <button class="btn btn-primary mx-4 my-3 btn btn-danger" type="button" th:onclick="|window.location.href='@{/maintainMenu}'|" data-mdb-ripple-init >Salir</button>
+                </row>
+                
+              </form>
+                    
+                
+
+
+            </form>
+
+            <div style="max-height: 350px;  overflow:auto;">
+              <table class="table table-hover " id="table">
+                  <thead class="thead-dark">
+                    <tr >
+                      <th style="position: sticky; top: 0;" scope="col" class="col-2" >Codigo</th>
+                      <th style="position: sticky;top: 0;" scope="col" >Descripcion</th>
+                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Estado</th>
+                      <th style="position: sticky;top: 0;"scope="col"  class="col-1"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="td: ${typeDocuments}">
+                      <th scope="row" th:text= " ${td.tipo_documento}">>PAS</th>
+                      <td th:text= "${td.descripcion}" th:attr="id=${td.id}" th:value="${td.id}"> </td>
+                      <td th:text= "${td.estado}"> 
+                      <td>
+                          <div class="form-check">
+                            <input type="radio" class="form-check-input" name="exampleRadios" th:value="${td.id}" th:onclick="">
+                            <a th:href='@{/editTypeDocument/} + ${td.id}' class="btn btn-info">Editar</a>
+                          </div>
+                      </td>  
+                      </td>
+                    </tr>
+                    <tr >
+                      <th scope="row">01</th>
+                      <td>Inicial</td>
+                      <td>Activo</td>
+                      <td>
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr >
+                      <th scope="row">02</th>
+                      <td>Primaria</td>
+                      <td>Activo</td>
+                      <td>
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr >
+                      <th scope="row">03</th>
+                      <td>Secunadaria</td>
+                      <td>Activo</td>
+                      <td>
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
+                        </div>
+                      </td>
+                    </tr>
+
+                    
+
+                    
+                    
+                  </tbody>
+              </table>
+            </div>   
+
+
+          
+    </div>
+    
+
+</main>
+
+<div th:replace="~{utils/footer :: footer}"></div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+            crossorigin="anonymous">
+</script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js">
+</script>
+
+
+
+
+
+
+
+<!-- Bootstrap JS -->
+<script>
+  //$().dropdown('update', function() {})
+
+      //cleann all sellection with limpiar button
+      /*$(document).on('click', '#btn-limpiar', function(e) {
+          $('#table tr').removeClass('table-active');
+      });*/
+
+      //clean form with limpiar button
+      document.getElementById("btn-limpiar").addEventListener('click', function () {
+          var idTypeDocument = /*[[${message}]]*/ "";
+          var typeDocument = document.getElementById('tipo_documento');
+          typeDocument.value = '';
+          
+          var descripcion = document.getElementById('descripcion');
+          descripcion.value = '';
+
+          var estado = document.getElementById('estado');
+          estado.value = 'Activo';
+
+          document.getElementById("btn-modificar-doc").disabled=true;
+
+          var ele = document.getElementsByName("exampleRadios");
+
+          var row1 = document.getElementsByClassName("table-active")
+          /*if(typeof index !== "undefined"){
+                           table.rows[index].classList.toggle("table-active");
+          }*/
+
+          for(var i=0;i<ele.length;i++)
+              ele[i].checked = false;
+              //console.log(row1)
+              //row1.classList.remove("table-active")
+                });
+
+          
+
+                
+     
+
+// to Fill the form with datatable
+    var table = document.getElementById('table');
+                
+                for(var i = 1; i < table.rows.length; i++)
+                {
+                    table.rows[i].onclick = function()
+                    {
+                         //rIndex = this.rowIndex;
+                         document.getElementById("tipo_documento").value = this.cells[0].innerHTML;
+                         document.getElementById("descripcion").value = this.cells[1].innerHTML;
+                         document.getElementById("estado").value = this.cells[2].innerHTML;
+                         document.getElementById("id").value = this.cells[3].getElementsByTagName("input")[0].value;
+                         console.log(this.cells[3].getElementsByTagName("input")[0].value)
+
+                         document.getElementById("btn-modificar-doc").disabled=false;
+
+
+                        
+                         // remove the background from the previous selected row
+                        /*if(typeof index !== "undefined"){
+                           table.rows[index].classList.toggle("table-active");
+                        }
+
+                        console.log(typeof index);
+                        // get the selected row index
+                        index = this.rowIndex;
+                        // add class selected to the row
+                        this.classList.toggle("table-active");
+                        //console.log(typeof index);*/
+                    };
+                }
+  
+
+    
+                /*$(document).ready(function(){
+                  $(".table  tr").click(function(){
+                      $(this).toggleClass("table-active");
+                      console.log("Hola")
+                  });
+              });*/
+    
+
+
+    // to click in anypplace to select rowtable            
+    $('.table tbody tr').click(function(event) {
+        if (event.target.type !== 'radio') {
+           $(':radio', this).trigger('click');
+                               }
+      });
+</script>
+</body>
+</html>
