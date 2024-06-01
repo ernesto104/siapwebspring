@@ -45,13 +45,14 @@ public class TypeDocumentController {
 
 	@GetMapping("/editTypeDocument/{id}"/* , params="action=saveTypeDocument"*/)
 	public String editypeDocument(@PathVariable  int id ,Model model/* , @ModelAttribute("typeDocument") TypeDocument typeDocumentData*/) { // Nombre de typeDocument como referencia
-		
+			List<TypeDocument> typeDocuments = typeDocumentService.getAllTypeDocuments();
 		
 		//TypeDocument typeDocument=typeDocumentService.editTypeDocumentById(id_documento,typeDocumentData);
 
 		TypeDocument typeDocument=typeDocumentService.getTypeDocumentById(id);
 		model.addAttribute("typeDocument", typeDocument);
-		return "typedocument_edit";
+		model.addAttribute("typeDocuments", typeDocuments);
+		return "typedocument";
 	}
 	
 
