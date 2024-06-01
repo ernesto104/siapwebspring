@@ -19,7 +19,7 @@
         <!--<div class="jumbotron">-->
             <div class="container text-center" style="max-width: 500px;">
                 <!--<h1 class="display-4 ">Info</h1> --><!-- para padding boostrap ( class="pt-5")-->
-                <h1 class="display-5 ">Tabla de Usuarios</h1> <!--para margin boostrap  ( class="mt-5") (pero se le aplica a toda la hoja en general)-->
+                <h1 class="display-5 ">Profesiones</h1> <!--para margin boostrap  ( class="mt-5") (pero se le aplica a toda la hoja en general)-->
             <!--</div>-->
             
             
@@ -33,20 +33,20 @@
             <form class="needs-validation">
 
                 <div class="form-row  mt-5">
-                      <div class="form-inline col-md-8 mb-3">
-                        <label for="validationCustom04" class="mr-sm-3">Codigo (DNI):(*) </label>
-                        <input type="text" class="form-control col-md-2 ml-sm-4" id="validationCustom04" placeholder="DNI">
-                        <input type="text" class="form-control col-md-3 ml-sm-3" id="validationCustom01" placeholder="Numero">
+                      <div class="col-md-8 mb-3">
+                        <label for="validationCustom04" class="mr-sm-3">Codigo (Correlativo):(*) </label>
+                        <input type="text"  class="form-control col-md-2 " id="tipo_documento" placeholder="Codigo" required>
                       </div>
                   </div>
                   <div class="form-row">
-                    <div class="form-inline col-md-6 mb-3">
-                      <label for="validationCustom04" class="mr-sm-4">Nombre:&nbsp;(*)</label>
-                      <input type="text" class="form-control col-md-7 ml-sm-5" id="validationCustom04" placeholder="Nombre Completo">
+                    <div class=" col-md-6 mb-3">
+                      <label for="validationCustom04" class="mr-sm-4">Descripcion Profesion:&nbsp;(*)</label>
+                      <input type="text"  class="form-control col-md-8 " id="descripcion" placeholder="Profesion" required>
                     </div>
-                    <div class="form-inline col-md-3 mb-3">
-                      <label for="validationCustom04" class="mr-sm-3">Estado (*)</label>
-                      <select class="custom-select col-md-5" aria-label="Default select example" >
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustom04"  class="mr-sm-3">Estado (*)</label>
+                      <div class="span"></div>
+                      <select class="custom-select col-md-5" aria-label="Default select example" id="estado" required>
                         <!--<option selected>Seleccionar Estado</option> -->
                         <option value="Activo" selected>Activo</option>
                         <option value="Inactivo">Inactivo</option>
@@ -55,61 +55,7 @@
                     
                   </div>
                 </div>
-                <div class="form-row">
-                  <div class="form-inline col-md-6 mb-3">
-                    <label for="validationCustom01" class="mr-sm-2">Region/Territorio: (*)&nbsp;</label>
-                    <select id="validationCustom01" class="form-control col-md-7">
-                      <option selected>La Libertad</option>
-                      <option>Loreto</option>
-                      <option>San Martin</option>
-                    </select>
-                  </div>
-                  <div class=" form-inline col-md-4 mb-3">
 
-                    <label for="validationCustom04" >Rol asignado: (*) </label>
-                    <select class="form-control col-md-6 ml-sm-2" aria-label="Default select example" >
-                      <!--<option selected>Seleccionar Estado</option> -->
-                      <option value="Activo" selected>ADM Region</option>
-                      <option value="Inactivo">Usuario Normal</option>
-                    </select>
-
-                  
-                  </div>
-
-
-                </div>
-                <div class="form-row">
-                  <div class="form-inline col-md-6 mb-4">
-                    <label for="validationCustom03" class="mr-sm-5">Área: (*)&nbsp;</label>
-                    <select id="validationCustom03" class="form-control col-md-6 ml-sm-5" aria-label="Default select example" >
-                      <option selected>Trujillo</option>
-                      <option>..</option>
-                      <option>..</option>
-                    </select>
-                  </div>
-                  <div class=" form-inline col-md-4 mb-3">
-
-                    <label for="validationCustom05" >Contraseña: (*) </label>
-                    <input type="password" class="form-control col-md-6 ml-sm-3" id="validationCustom05" placeholder="Contraseña">
-
-                  
-                  </div>
-
-                </div>
-                <div class="form-row">
-                  <div class=" form-inline col-md-4 mb-4">
-
-                    <label for="validationCustom04" class="mr-sm-5">Zona (*)&nbsp;</label>
-
-                    <select class="form-control col-md-6 ml-sm-5" aria-label="Default select example" >
-                      <!--<option selected>Seleccionar Estado</option> -->
-                      <option value="Activo" selected>Nombre Zona</option>
-                      <option value="Inactivo">Nombre zona 2</option>
-                    </select>
-                  </div>
-                  
-                  
-                </div>
               
 
                 <row class="justify-content-center">
@@ -127,16 +73,11 @@
             </form>
 
             <div style="max-height: 350px;  overflow:auto;">
-              <table class="table table-hover table-bordered" id="table">
+              <table class="table table-hover " id="table">
                   <thead class="thead-dark">
                     <tr >
-                      <th style="position: sticky; top: 0;" scope="col" >Tipo</th>
-                      <th style="position: sticky;top: 0;" scope="col" class="col-2">Nro Documento</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-3">Nombre</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-3">Region</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Territorio</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Zona</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-3">Rol</th>
+                      <th style="position: sticky; top: 0;" scope="col" class="col-2" >Codigo</th>
+                      <th style="position: sticky;top: 0;" scope="col" >Descripcion de Profesion</th>
                       <th style="position: sticky;top: 0;"scope="col" class="col-1">Estado</th>
                       <th style="position: sticky;top: 0;"scope="col"  class="col-1"></th>
                     </tr>
@@ -155,13 +96,8 @@
                       </td>
                     </tr>
                     <tr >
-                      <th scope="row">DNI</th>
-                      <td>07237645</td>
-                      <td>Javier Salas Pardo</td>
-                      <td>Lima</td>
-                      <td>Lima</td>
-                      <td>Rimac</td>
-                      <td>ADM General</td>
+                      <th scope="row">00001</th>
+                      <td>Abogado</td>
                       <td>Activo</td>
                       <td>
                         <div class="form-check">
@@ -170,13 +106,8 @@
                       </td>
                     </tr>
                     <tr >
-                      <th scope="row">DNI</th>
-                      <td>07356933</td>
-                      <td>Freddy Arellano Fuentes</td>
-                      <td>Lima</td>
-                      <td>Lima</td>
-                      <td>Rimac</td>
-                      <td>ADM Region</td>
+                      <th scope="row">00002</th>
+                      <td>Actor/Actriz/Artista/Director de espectaculos</td>
                       <td>Activo</td>
                       <td>
                         <div class="form-check">
@@ -185,13 +116,8 @@
                       </td>
                     </tr>
                     <tr >
-                      <th scope="row">DNI</th>
-                      <td>08503888</td>
-                      <td>Lupe Contreras Salas</td>
-                      <td>Arequipa</td>
-                      <td>Camana</td>
-                      <td>San Jose</td>
-                      <td>ADM Region</td>
+                      <th scope="row">00003</th>
+                      <td>Actuario</td>
                       <td>Activo</td>
                       <td>
                         <div class="form-check">
@@ -199,7 +125,38 @@
                         </div>
                       </td>
                     </tr>
+                    <tr >
+                      <th scope="row">00004</th>
+                      <td>Administrador</td>
+                      <td>Activo</td>
+                      <td>
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
+                        </div>
+                      </td>
                     </tr>
+                    <tr >
+                      <th scope="row">00005</th>
+                      <td>Aduanero/Agente de Aduanas/Inspector de Frontera</td>
+                      <td>Activo</td>
+                      <td>
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr >
+                      <th scope="row">00006</th>
+                      <td>Aeromoso/Azafata</td>
+                      <td>Activo</td>
+                      <td>
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
+                        </div>
+                      </td>
+                    </tr>
+
+                    
 
                     
                     
@@ -283,7 +240,7 @@
                          document.getElementById("descripcion").value = this.cells[1].innerHTML;
                          document.getElementById("estado").value = this.cells[2].innerHTML;
                          //document.getElementById("id").value = this.cells[3].getElementsByTagName("input")[0].value;
-                         console.log(this.cells[3].getElementsByTagName("input")[0].value)
+                         //console.log(this.cells[3].getElementsByTagName("input")[0].value)
 
                          document.getElementById("btn-modificar-doc").disabled=false;
 
