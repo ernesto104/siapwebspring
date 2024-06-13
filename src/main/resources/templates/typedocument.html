@@ -105,7 +105,7 @@
                       <td th:text= "${td.estado}"> 
                       <td>
                           <div class="form-check">
-                            <input type="radio" class="form-check-input" name="exampleRadios" th:value="${td.id}" th:onclick="|window.location.href='@{/editTypeDocument/} + ${td.id}'|" th:attr ="checked=${td.id} ==${typeDocument.id} ? 'checked' : null">
+                            <input type="radio" class="form-check-input" name="exampleRadios" th:value="${td.id}" th:onclick="|window.location.href='@{/typedocument/} + ${td.id}'|" th:attr ="checked=${td.id} ==${typeDocument.id} ? 'checked' : null">
                             <!--<a th:href='@{/editTypeDocument/} + ${td.id}' class="btn btn-info">Editar</a>-->
                           </div>
                       </td>  

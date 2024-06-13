@@ -30,3 +30,13 @@ body .container-page {
   padding-right: 50px;
   padding-top: 30px;
 }
+
+body .container-page-form {
+  background-color: white;
+  min-height: 80vh;
+  margin-left: 200px;
+  margin-right: 200px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 30px;
+}

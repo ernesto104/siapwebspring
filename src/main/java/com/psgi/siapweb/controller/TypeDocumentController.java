@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResultUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,8 +44,8 @@ public class TypeDocumentController {
 	}
 
 
-	@GetMapping("/editTypeDocument/{id}"/* , params="action=saveTypeDocument"*/)
-	public String editypeDocument(@PathVariable  int id ,Model model/* , @ModelAttribute("typeDocument") TypeDocument typeDocumentData*/) { // Nombre de typeDocument como referencia
+	@GetMapping("/typedocument/{id}"/* , params="action=saveTypeDocument"*/)
+	public String editypeDocument(@PathVariable  Long id ,Model model/* , @ModelAttribute("typeDocument") TypeDocument typeDocumentData*/) { // Nombre de typeDocument como referencia
 			List<TypeDocument> typeDocuments = typeDocumentService.getAllTypeDocuments();
 		
 		//TypeDocument typeDocument=typeDocumentService.editTypeDocumentById(id_documento,typeDocumentData);
@@ -57,14 +58,19 @@ public class TypeDocumentController {
 	
 
 	@PostMapping("/editSaveTypeDocument/{id}"/* , params="action=saveTypeDocument"*/)
-	public String editypeDocumentSave(@PathVariable  int id , @ModelAttribute("typeDocument") TypeDocument typeDocumentData) { // Nombre de typeDocument como referencia
+	public String editypeDocumentSave(@PathVariable  Long id , @ModelAttribute("typeDocument") TypeDocument typeDocumentData) { // Nombre de typeDocument como referencia
 		
-		
+		//new Reactive
 		typeDocumentService.editTypeDocumentById(id,typeDocumentData);
-
+		TypeDocument result = typeDocumentService.editTypeDocumentById(id,typeDocumentData);
+		if (result.getClass().equals(UnsupportedOperationException.class)) {
+			return "redirect:/maintainMenu";
+		}
 		//TypeDocument typeDocument=typeDocumentService.getTypeDocumentById(id);
 		//model.addAttribute("typeDocument", typeDocument);
+		else {
 		return "redirect:/typedocument";
+		}
 	}
 
     /*@GetMapping("/available_books")

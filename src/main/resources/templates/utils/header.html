@@ -5,7 +5,7 @@
     <title>Spring MVC</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark" th:fragment="header">
+<nav class="navbar navbar-expand-md navbar-light" style="background-color: #e3f2fd;" th:fragment="header">
 
     <a class="navbar-brand" th:href="@{/}">PSGI - International</a>
 
@@ -17,11 +17,11 @@
     <div class="collapse navbar-collapse" id="navbarsExample04">
         <ul class="navbar-nav mr-auto">
             <!--            <li class="nav-item" th:class="${#httpServletRequest.requestURI.contains('home')} ? 'nav-link active' : 'nav-link'">-->
-            <li class="nav-item pull-right" th:class="${activePage == 'info'} ? 'nav-item active' : 'nav-item'">
+            <li class="nav-item pull-right" th:class="${activePage == 'info'} ? 'nav-item active' : 'nav-item'" hidden>
                 <a class="nav-link" th:href="@{/info}">Info<span class="sr-only">(current)</span></a>
             </li>
             <!--            <li class="nav-item" th:class="${#httpServletRequest.requestURI.contains('contact')} ? 'nav-link active' : 'nav-link'">-->
-            <li class="nav-item pull-right" th:class="${activePage == 'mainMenu'} ? 'nav-item active' : 'nav-item'">
+            <li class="nav-item pull-right" th:class="${activePage == 'mainMenu'} ? 'nav-item active' : 'nav-item'" hidden>
                 <a class="nav-link" th:href="@{/mainMenu}">mainMenu</a>
             </li>
 

@@ -22,7 +22,7 @@ public class TypeDocument {
 
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    int id;
+    Long id;
 
     @Column(unique = true)
     String tipo_documento;

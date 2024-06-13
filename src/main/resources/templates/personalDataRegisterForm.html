@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring MVC</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link th:href="@{styles/css/jasny-bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{styles/main.css}" rel="stylesheet"/>
+</head>
+<body class="flex-column h-100">
+
+<div th:replace="~{utils/header :: header}"></div>
+
+<main role="main" class="">
+    <div class="container-page-form align-items-center ">
+        <!--<div class="jumbotron">-->
+            <div class="container text-center" style="max-width: 600px;">
+                <!--<h1 class="display-4 ">Info</h1> --><!-- para padding boostrap ( class="pt-5")-->
+                <h1 class="display-5 ">Registro de Datos Personales</h1> <!--para margin boostrap  ( class="mt-5") (pero se le aplica a toda la hoja en general)-->
+            <!--</div>-->
+            
+            
+                <!--<div class="list-group list-group-light ">
+                 
+                    <a th:href="@{/maintainMenu}" class="list-group-item list-group-item-action px-5 border-4 rounded-3 my-3 list-group-item-danger">
+                    Salir del Sistema</a>
+                    
+                </div>-->
+            </div> 
+            <form>
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="form-row mt-5">
+                    <div class="form-group form-inline col-md-4">
+                      <label for="inputEmail4" class="mr-sm-2">Tipo Documento: (*)</label>
+                      <input type="email" class="form-control col-md-4" id="inputEmail4" placeholder="Codigo">
+                    </div>
+                    <div class="form-group form-inline col-md-4">
+                      <label for="inputPassword4" class="mr-sm-2">Tit. Gohonzon: (*)</label>
+                      <select id="inputState" class="form-control">
+                        <option selected>Gohonzon 1</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="form-group form-inline col-md-4">
+                      <label for="inputCity" class="mr-sm-2">Telefono(s):</label>
+
+
+                          <input type="text" class="form-control col-md-4 mr-sm-2" id="inputCity" placeholder="Numero 1">
+
+                          <input type="text" class="form-control col-md-4" id="inputCity" placeholder="Numero 2">
+                         
+                      
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="inputAddress">  Nro Documento: (*)</label>
+                      <input type="text" class="form-control" id="inputAddress" placeholder="Numero Completo del codigo">
+                    </div>
+                  
+                  </div> 
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="inputCity">Región/Territorio: (*)</label>
+                      <select id="inputState" class="form-control">
+                        <option selected>Region</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputState">Area: (*)</label>
+                      <select id="inputState" class="form-control">
+                        <option selected>Nombre Area</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputState">F. Nacimiento: (*)</label>
+                      <input size="20" type="date" class="form-control" id="datetimebirth">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="inputCity">Zona: (*)</label>
+                      <select id="inputState" class="form-control">
+                        <option selected>Nombre Zona</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label class="" for="gridCheck">
+                        Sector: (*)
+                      </label>
+                      <select id="inputState" class="form-control">
+                        <option selected>Nombre Sector</option>
+                        <option>...</option>
+                      </select>                  
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputState">F. Gohonzon: (*)</label>
+                      <input size="20" type="date" class="form-control" id="datetimegohonzon">
+                    </div>
+                  </div>
+                  
+                </div> 
+                
+                <div class="fileinput fileinput-new mt-5" data-provides="fileinput">
+                  <div class="fileinput-new img-thumbnail" style="width: 300px; height: 250px;">
+                    <img data-src="holder.js/100%x100%"  alt="...">
+                  </div>
+                  <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 300px; max-height: 450px;"></div> <!--Solo width referencial-->
+                  <div>
+                    <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Agregar imagen</span><span class="fileinput-exists">Cambiar</span><input type="file" name="..."></span>
+                    <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Quitar</a>
+                  </div>
+                </div>
+              </div>  
+              <!---->
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Grupo: (*)</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Nombre Grupo</option>
+                    <option>...</option>
+                  </select>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Nacionalidad: (*)</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Peruano</option>
+                    <option>...</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Estado Miembro: (*)</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Activo</option>
+                    <option>Inactivo</option>
+                  </select>
+                </div>
+              </div>
+             
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Apellido Paterno: (*)</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Apellido Paterno">
+                </div>
+                <div class="col-md-3"></div>
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Condicion Juridica: (*)</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Juridica</option>
+                    <option>...</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Estado Ingreso: (*)</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Activo</option>
+                    <option>Inactivo</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Apellido Materno: (*)</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Apellido Materno">
+                </div>
+                <div class="col-md-3"></div>
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Profesion: (*)</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Profesor</option>
+                    <option>...</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Estado Salida: (*)</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Activo</option>
+                    <option>Inactivo</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Nombre: (*)</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Nombre">
+                </div>
+                <div class="col-md-3"></div>
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Nivel Educativo: (*)</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Basico</option>
+                    <option>Superior</option>
+                  </select>
+                </div>
+                
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Direccion: (*)</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Direccion Detallada">
+                </div>
+                <div class="col-md-3"></div>
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Division: (*)</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Division 1</option>
+                    <option>Division 2</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="inputCity">Departamento: (*)</label>
+                  
+                  <select id="inputState" class="form-control">
+                    <option selected>Departamento 1</option>
+                    <option>Departamento 2</option>
+                  </select>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="form-group col-md-4">
+                  <label for="inputCity">Email: (*)</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Email">
+                 
+                </div>
+                
+              </div>
+
+              
+             
+                <div class="row">
+                 <div class="col-md-5"> 
+                    <div class="form-row">
+                      <div class="form-group col-md-7">
+                        <label for="inputCity">Distrito: (*)</label>
+                        <select id="inputState" class="form-control">
+                          <option selected>Distrito 1</option>
+                          <option>Distrito 2</option>
+                        </select>
+                      
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-7">
+                        <label for="inputCity">Provincia: (*)</label>
+                        <select id="inputState" class="form-control">
+                          <option selected>Provincia 1</option>
+                          <option>Provincia 2</option>
+                        </select>
+                      
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" col-md-7">
+                    <div class="form-row ml-5">
+                      <div class="form-group col-md-8 ml-5" >
+                        <label for="inputCity">Observaciones: (*)</label>
+                        <textarea class="form-control" name="comentarios" rows="5" cols="40">Escribe aquí tus comentarios</textarea>
+                      
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+
+              
+              <div class="row pb-5">
+                <div class="col-md-3">
+                  <button type="submit" class="btn btn-primary form-control">Actualizar</button>
+                </div>
+                <div class="col-md-3">
+                  <button type="button" class="btn btn-danger form-control" th:onclick="|window.location.href='@{/mainMenu}'|">Cancelar</button>
+                </div>
+              </div>
+            </form>
+            </div>
+              
+                    
+                
+
+
+            
+
+            
+        
+
+
+          
+    
+    
+
+</main>
+
+<div th:replace="~{utils/footer :: footer}"></div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+            crossorigin="anonymous">
+</script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js">
+</script>
+<!-- Bootstrap JS -->
+<script th:src="@{styles/js/jasny-bootstrap.min.js}"></script>
+<script>
+  $().dropdown('update', function() {})
+
+</script>
+</body>
+</html>
