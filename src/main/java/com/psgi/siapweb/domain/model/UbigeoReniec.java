@@ -21,7 +21,7 @@ public class UbigeoReniec {
 
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    String id;
+    Long id;
 
 
     String departamento;

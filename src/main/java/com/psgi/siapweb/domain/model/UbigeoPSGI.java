@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class UbigeoPSGI {
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    String id;
+    Long id;
 
 
     String codigo_region;

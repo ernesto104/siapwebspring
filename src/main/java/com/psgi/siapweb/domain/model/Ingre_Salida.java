@@ -23,7 +23,7 @@ public class Ingre_Salida {
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "codigo_is")
-    String id;
+    Long id;
 
     String descripcion;
 

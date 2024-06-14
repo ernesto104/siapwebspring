@@ -23,7 +23,7 @@ public class Rol {
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "codigo_rol")
-    String id;
+    Long id;
 
     String descripcion;
 

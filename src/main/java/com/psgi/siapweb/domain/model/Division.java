@@ -23,7 +23,7 @@ public class Division {
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "codigo_division")
-    String id;
+    Long id;
 
     String descripcion;
 
