@@ -22,7 +22,7 @@ public class NivelEducativo {
 
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "codigo_nivel")
+    @Column(name = "codigo_educ")
     Long id;
 
     String descripcion;
