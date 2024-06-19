@@ -17,21 +17,18 @@
         <!--<div class="jumbotron">-->
             <div class="container text-center" style="max-width: 500px;">
                 <!--<h1 class="display-4 ">Info</h1> --><!-- para padding boostrap ( class="pt-5")-->
-                <h1 class="display-5 ">Menu Principal</h1> <!--para margin boostrap  ( class="mt-5") (pero se le aplica a toda la hoja en general)-->
+                <h1 class="display-5 ">Tabla de Estados</h1> <!--para margin boostrap  ( class="mt-5") (pero se le aplica a toda la hoja en general)-->
             <!--</div>-->
             
             
                 <div class="list-group list-group-light " style="display:inline-block">
-                    <a th:href="@{/maintainMenu}" class="list-group-item list-group-item-action px-2  rounded-3 mt-3 mb-2 list-group-item-primary">
-                    Mantenimiento de Tablas</a>
+                    <a th:href="@{/estadosMiembro}" class="list-group-item list-group-item-action px-2  rounded-3 mt-3 mb-2 list-group-item-primary">
+                    Estados del Miembro</a>
                     <a th:href="@{/registerPersonalDataForm}" class="list-group-item list-group-item-action px-4 border-4 rounded-3 my-3 list-group-item-primary">
-                    Registro de Datos Personales</a>
-                    <a href="#" class="list-group-item list-group-item-action px-2 border-4 rounded-3 my-3 list-group-item-primary">
-                    Consulta de Traslados</a>
-                    <a href="#" class="list-group-item list-group-item-action px-2 border-4 rounded-3 my-3 list-group-item-primary">
-                    Consultas y/o Reportes</a>
-                    <a th:href="@{/}" class="list-group-item list-group-item-action px-2 border-4 rounded-3 my-3 list-group-item-danger">
-                    Salir del Sistema</a>
+                    Estados de Ingresos / Salidas</a>
+
+                    <a th:href="@{/maintainMenu}" class="list-group-item list-group-item-action px-2 border-4 rounded-3 my-3 list-group-item-danger">
+                    Salir de Estados</a>
                     
                 </div>
             </div>    
