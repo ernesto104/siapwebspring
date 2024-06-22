@@ -1,6 +1,7 @@
 package com.psgi.siapweb.controller;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,9 +52,12 @@ public class TypeDocumentController {
 		//TypeDocument typeDocument=typeDocumentService.editTypeDocumentById(id_documento,typeDocumentData);
 
 		TypeDocument typeDocument=typeDocumentService.getTypeDocumentById(id);
+		if (typeDocument.getClass().equals(NoSuchElementException.class)) {
+			return "redirect:/maintainMenu";
+		} else {
 		model.addAttribute("typeDocument", typeDocument);
 		model.addAttribute("typeDocuments", typeDocuments);
-		return "typedocument";
+		return "typedocument";}
 	}
 	
 

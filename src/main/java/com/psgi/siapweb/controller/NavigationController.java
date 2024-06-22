@@ -35,6 +35,12 @@ public class NavigationController {
         return "maintainMenu";
     }
 
+    @GetMapping("/recoverPass")
+    public String getRecoverPass(Model model){
+        //model.addAttribute("activePage", "maintainMenu");
+        return "recoverPass";
+    }
+
 
     /*@GetMapping("/typedocument")
     public String getTypeDocument(Model model){
