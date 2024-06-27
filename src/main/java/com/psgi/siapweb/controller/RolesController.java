@@ -11,7 +11,7 @@ public class RolesController {
     @GetMapping("/roles")
         public String getControlSystem(Model model){
             //model.addAttribute("activePage", "maintainMenu");
-            return "rolesTable";
+            return "mainMenu/maintainMenu/rolesTable";
         }
 
 }

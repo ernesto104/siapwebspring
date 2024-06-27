@@ -10,7 +10,7 @@ public class LevelEducationController {
     @GetMapping("/levelEducation")
     public String getUbigeoPSGI(Model model){
         //model.addAttribute("activePage", "info");
-        return "levelEducation";
+        return "mainMenu/maintainMenu/levelEducation";
     }
 
 }

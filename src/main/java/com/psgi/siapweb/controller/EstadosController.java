@@ -11,7 +11,7 @@ public class EstadosController {
     @GetMapping("/estados")
     public String getInfo(Model model){
         model.addAttribute("activePage", "info");
-        return "estadosTable";
+        return "mainMenu/maintainMenu/estadosMenu/estadosTable";
     }
 
 
@@ -21,7 +21,7 @@ public class EstadosController {
     @GetMapping("/estadosMiembro")
     public String getEstadosMiembro(Model model){
         model.addAttribute("activePage", "info");
-        return "estadosMiembroTable";
+        return "mainMenu/maintainMenu/estadosMenu/estadosMiembroTable";
     }
 
     

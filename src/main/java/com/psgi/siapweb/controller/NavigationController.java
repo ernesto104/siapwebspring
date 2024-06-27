@@ -26,13 +26,13 @@ public class NavigationController {
     @GetMapping({"/mainMenu"})
     public String getMainMenu(Model model){
         model.addAttribute("activePage", "mainMenu");
-        return "mainMenu";
+        return "/mainMenu";
     }
 
     @GetMapping("/maintainMenu")
     public String getMaintainMenu(Model model){
         //model.addAttribute("activePage", "maintainMenu");
-        return "maintainMenu";
+        return "mainMenu/maintainMenu/maintainMenu";
     }
 
     @GetMapping("/recoverPass")
@@ -52,7 +52,7 @@ public class NavigationController {
     @GetMapping("/controlSystem")
     public String getControlSystem(Model model){
         //model.addAttribute("activePage", "maintainMenu");
-        return "controlSystem";
+        return "mainMenu/maintainMenu/controlSystem";
     }
 
 

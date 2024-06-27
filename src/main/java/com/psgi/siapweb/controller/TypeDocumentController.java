@@ -27,7 +27,7 @@ public class TypeDocumentController {
     @PostMapping(value="/saveTypeDocument"/* , params="action=saveTypeDocument"*/)
 	public String saveTypeDocument(@ModelAttribute("typeDocument") TypeDocument typeDocument) { // Nombre de typeDocument como referencia
 		typeDocumentService.createTypeDocument(typeDocument);
-		return "redirect:/typedocument";
+		return "redirect:mainMenu/maintainMenu/typedocument";
 	}
 	
 
@@ -41,7 +41,7 @@ public class TypeDocumentController {
 //		ModelAndView m=new ModelAndView();
 //		m.setViewName("bookList");
 //		m.addObject("book",list);
-		return "typedocument";
+		return "mainMenu/maintainMenu/typedocument";
 	}
 
 
@@ -57,7 +57,7 @@ public class TypeDocumentController {
 		} else {
 		model.addAttribute("typeDocument", typeDocument);
 		model.addAttribute("typeDocuments", typeDocuments);
-		return "typedocument";}
+		return "mainMenu/maintainMenu/typedocument";}
 	}
 	
 
@@ -68,12 +68,12 @@ public class TypeDocumentController {
 		typeDocumentService.editTypeDocumentById(id,typeDocumentData);
 		TypeDocument result = typeDocumentService.editTypeDocumentById(id,typeDocumentData);
 		if (result.getClass().equals(UnsupportedOperationException.class)) {
-			return "redirect:/maintainMenu";
+			return "redirect:mainMenu/maintainMenu//maintainMenu";
 		}
 		//TypeDocument typeDocument=typeDocumentService.getTypeDocumentById(id);
 		//model.addAttribute("typeDocument", typeDocument);
 		else {
-		return "redirect:/typedocument";
+		return "redirect:mainMenu/maintainMenu//typedocument";
 		}
 	}
 

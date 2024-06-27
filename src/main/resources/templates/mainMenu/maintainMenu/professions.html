@@ -19,7 +19,7 @@
         <!--<div class="jumbotron">-->
             <div class="container text-center" style="max-width: 500px;">
                 <!--<h1 class="display-4 ">Info</h1> --><!-- para padding boostrap ( class="pt-5")-->
-                <h1 class="display-5 ">Niveles Educativos</h1> <!--para margin boostrap  ( class="mt-5") (pero se le aplica a toda la hoja en general)-->
+                <h1 class="display-5 ">Profesiones</h1> <!--para margin boostrap  ( class="mt-5") (pero se le aplica a toda la hoja en general)-->
             <!--</div>-->
             
             
@@ -34,14 +34,14 @@
 
                 <div class="form-row  mt-5">
                       <div class="col-md-8 mb-3">
-                        <label for="validationCustom04" class="mr-sm-3">Codigo :(*) </label>
+                        <label for="validationCustom04" class="mr-sm-3">Codigo (Correlativo):(*) </label>
                         <input type="text"  class="form-control col-md-2 " id="tipo_documento" placeholder="Codigo" required>
                       </div>
                   </div>
                   <div class="form-row">
                     <div class=" col-md-6 mb-3">
-                      <label for="validationCustom04" class="mr-sm-4">Nivel Educativo:&nbsp;(*)</label>
-                      <input type="text"  class="form-control col-md-7 " id="descripcion" placeholder="Nivel Educativo" required>
+                      <label for="validationCustom04" class="mr-sm-4">Descripcion Profesion:&nbsp;(*)</label>
+                      <input type="text"  class="form-control col-md-8 " id="descripcion" placeholder="Profesion" required>
                     </div>
                     <div class="col-md-4 mb-3">
                       <label for="validationCustom04"  class="mr-sm-3">Estado (*)</label>
@@ -77,7 +77,7 @@
                   <thead class="thead-dark">
                     <tr >
                       <th style="position: sticky; top: 0;" scope="col" class="col-2" >Codigo</th>
-                      <th style="position: sticky;top: 0;" scope="col" >Descripcion</th>
+                      <th style="position: sticky;top: 0;" scope="col" >Descripcion de Profesion</th>
                       <th style="position: sticky;top: 0;"scope="col" class="col-1">Estado</th>
                       <th style="position: sticky;top: 0;"scope="col"  class="col-1"></th>
                     </tr>
@@ -96,8 +96,8 @@
                       </td>
                     </tr>
                     <tr >
-                      <th scope="row">01</th>
-                      <td>Inicial</td>
+                      <th scope="row">00001</th>
+                      <td>Abogado</td>
                       <td>Activo</td>
                       <td>
                         <div class="form-check">
@@ -106,8 +106,8 @@
                       </td>
                     </tr>
                     <tr >
-                      <th scope="row">02</th>
-                      <td>Primaria</td>
+                      <th scope="row">00002</th>
+                      <td>Actor/Actriz/Artista/Director de espectaculos</td>
                       <td>Activo</td>
                       <td>
                         <div class="form-check">
@@ -116,8 +116,38 @@
                       </td>
                     </tr>
                     <tr >
-                      <th scope="row">03</th>
-                      <td>Secunadaria</td>
+                      <th scope="row">00003</th>
+                      <td>Actuario</td>
+                      <td>Activo</td>
+                      <td>
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr >
+                      <th scope="row">00004</th>
+                      <td>Administrador</td>
+                      <td>Activo</td>
+                      <td>
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr >
+                      <th scope="row">00005</th>
+                      <td>Aduanero/Agente de Aduanas/Inspector de Frontera</td>
+                      <td>Activo</td>
+                      <td>
+                        <div class="form-check">
+                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
+                        </div>
+                      </td>
+                    </tr>
+                    <tr >
+                      <th scope="row">00006</th>
+                      <td>Aeromoso/Azafata</td>
                       <td>Activo</td>
                       <td>
                         <div class="form-check">
@@ -248,5 +278,6 @@
                                }
       });
 </script>
+<script th:src="@{config/reloj.js}"></script>
 </body>
 </html>

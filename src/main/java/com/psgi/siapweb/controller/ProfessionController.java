@@ -10,7 +10,7 @@ public class ProfessionController {
     @GetMapping("/professions")
     public String getControlSystem(Model model){
         //model.addAttribute("activePage", "maintainMenu");
-        return "professions";
+        return "mainMenu/maintainMenu/professions";
     }
 
 }

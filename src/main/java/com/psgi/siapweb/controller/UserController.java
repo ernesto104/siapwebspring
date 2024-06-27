@@ -12,6 +12,6 @@ public class UserController {
     @GetMapping("/usersTable")
     public String getUserTable(Model model){
         //model.addAttribute("activePage", "info");
-        return "usersTable";
+        return "mainMenu/maintainMenu/usersTable";
     }
 }

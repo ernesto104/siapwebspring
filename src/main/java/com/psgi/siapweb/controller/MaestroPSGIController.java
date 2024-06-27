@@ -10,7 +10,7 @@ public class MaestroPSGIController {
     @GetMapping("/registerPersonalDataForm")
     public String getPersonalDataRegisterForm(Model model){
         model.addAttribute("activePage", "info");
-        return "personalDataRegisterForm";
+        return "mainMenu/registroDataPersonalMenu/personalDataRegisterForm";
     }
 
 }

@@ -11,7 +11,7 @@ public class DivisionController {
     @GetMapping("/division")
     public String getInfo(Model model){
         model.addAttribute("activePage", "division");
-        return "divisionTable";
+        return "mainMenu/maintainMenu/divisionTable";
     }
 
 }

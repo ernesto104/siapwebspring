@@ -19,7 +19,7 @@
         <!--<div class="jumbotron">-->
             <div class="container text-center" style="max-width: 500px;">
                 <!--<h1 class="display-4 ">Info</h1> --><!-- para padding boostrap ( class="pt-5")-->
-                <h1 class="display-5 ">Programas</h1> <!--para margin boostrap  ( class="mt-5") (pero se le aplica a toda la hoja en general)-->
+                <h1 class="display-5 ">Niveles Educativos</h1> <!--para margin boostrap  ( class="mt-5") (pero se le aplica a toda la hoja en general)-->
             <!--</div>-->
             
             
@@ -34,14 +34,14 @@
 
                 <div class="form-row  mt-5">
                       <div class="col-md-8 mb-3">
-                        <label for="validationCustom04" class="mr-sm-3">Codigo:(*) </label>
+                        <label for="validationCustom04" class="mr-sm-3">Codigo :(*) </label>
                         <input type="text"  class="form-control col-md-2 " id="tipo_documento" placeholder="Codigo" required>
                       </div>
                   </div>
                   <div class="form-row">
                     <div class=" col-md-6 mb-3">
-                      <label for="validationCustom04" class="mr-sm-4">Descripcion :&nbsp;(*)</label>
-                      <input type="text"  class="form-control col-md-8 " id="descripcion" placeholder="Programas" required>
+                      <label for="validationCustom04" class="mr-sm-4">Nivel Educativo:&nbsp;(*)</label>
+                      <input type="text"  class="form-control col-md-7 " id="descripcion" placeholder="Nivel Educativo" required>
                     </div>
                     <div class="col-md-4 mb-3">
                       <label for="validationCustom04"  class="mr-sm-3">Estado (*)</label>
@@ -59,10 +59,10 @@
               
 
                 <row class="justify-content-center">
-                  <button class="btn btn-primary mx-4 my-3" type="submit" >Agregar</button>
-                  <button class="btn btn-primary mx-4 my-3" type="button" th:onclick="|window.location.href='@{/editTypeDocument/}'|" id="btn-modificar-doc" disabled>Modificar</button>  
-                  <button class="btn btn-primary mx-4 my-3" type="button" th:formaction="@{/cancelTypeDocument}" id="btn-limpiar" >Limpiar</button>
-                  <button class="btn btn-primary mx-4 my-3 btn btn-danger" type="button" th:onclick="|window.location.href='@{/maintainMenu}'|" data-mdb-ripple-init >Salir</button>
+                  <button class="btn btn-primary mx-4 my-3 col-md-2" type="submit" >Agregar</button>
+                  <button class="btn btn-primary mx-4 my-3 col-md-2" type="button" th:onclick="|window.location.href='@{/editTypeDocument/}'|" id="btn-modificar-doc" disabled>Modificar</button>  
+                  <button class="btn btn-primary mx-4 my-3 col-md-2" type="button" th:formaction="@{/cancelTypeDocument}" id="btn-limpiar" >Limpiar</button>
+                  <button class="btn btn-primary mx-4 my-3 col-md-2 btn btn-danger" type="button" th:onclick="|window.location.href='@{/maintainMenu}'|" data-mdb-ripple-init >Salir</button>
                 </row>
                 
               </form>
@@ -77,7 +77,7 @@
                   <thead class="thead-dark">
                     <tr >
                       <th style="position: sticky; top: 0;" scope="col" class="col-2" >Codigo</th>
-                      <th style="position: sticky;top: 0;" scope="col" >Descripcion de Profesion</th>
+                      <th style="position: sticky;top: 0;" scope="col" >Descripcion</th>
                       <th style="position: sticky;top: 0;"scope="col" class="col-1">Estado</th>
                       <th style="position: sticky;top: 0;"scope="col"  class="col-1"></th>
                     </tr>
@@ -96,8 +96,8 @@
                       </td>
                     </tr>
                     <tr >
-                      <th scope="row">PSGI01</th>
-                      <td>Control del Sistema</td>
+                      <th scope="row">01</th>
+                      <td>Inicial</td>
                       <td>Activo</td>
                       <td>
                         <div class="form-check">
@@ -106,8 +106,8 @@
                       </td>
                     </tr>
                     <tr >
-                      <th scope="row">PSGI02</th>
-                      <td>Tipos de Documentos</td>
+                      <th scope="row">02</th>
+                      <td>Primaria</td>
                       <td>Activo</td>
                       <td>
                         <div class="form-check">
@@ -116,68 +116,8 @@
                       </td>
                     </tr>
                     <tr >
-                      <th scope="row">PSGI03</th>
-                      <td>Ubigeo</td>
-                      <td>Activo</td>
-                      <td>
-                        <div class="form-check">
-                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
-                        </div>
-                      </td>
-                    </tr>
-                    <tr >
-                      <th scope="row">PSGI04</th>
-                      <td>Condicion Juridica</td>
-                      <td>Activo</td>
-                      <td>
-                        <div class="form-check">
-                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
-                        </div>
-                      </td>
-                    </tr>
-                    <tr >
-                      <th scope="row">PSGI05</th>
-                      <td>Usuarios del Sistema</td>
-                      <td>Activo</td>
-                      <td>
-                        <div class="form-check">
-                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
-                        </div>
-                      </td>
-                    </tr>
-                    <tr >
-                      <th scope="row">PSGI06</th>
-                      <td>Nivel Educativo</td>
-                      <td>Activo</td>
-                      <td>
-                        <div class="form-check">
-                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
-                        </div>
-                      </td>
-                    </tr>
-                    <tr >
-                      <th scope="row">PSGI07</th>
-                      <td>Profesiones</td>
-                      <td>Activo</td>
-                      <td>
-                        <div class="form-check">
-                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
-                        </div>
-                      </td>
-                    </tr>
-                    <tr >
-                      <th scope="row">PSGI08</th>
-                      <td>Estados</td>
-                      <td>Activo</td>
-                      <td>
-                        <div class="form-check">
-                          <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
-                        </div>
-                      </td>
-                    </tr>
-                    <tr >
-                      <th scope="row">PSGI09</th>
-                      <td>Division</td>
+                      <th scope="row">03</th>
+                      <td>Secunadaria</td>
                       <td>Activo</td>
                       <td>
                         <div class="form-check">
@@ -210,7 +150,7 @@
 <script
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js">
 </script>
-
+<script th:src="@{config/reloj.js}"></script>
 
 
 

@@ -11,6 +11,6 @@ public class ProgramsController {
     @GetMapping("/programs")
     public String getControlSystem(Model model){
         //model.addAttribute("activePage", "maintainMenu");
-        return "programsTable";
+        return "mainMenu/maintainMenu/programsTable";
     }
 }

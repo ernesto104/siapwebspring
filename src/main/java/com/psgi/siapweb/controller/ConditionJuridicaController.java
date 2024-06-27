@@ -10,6 +10,6 @@ public class ConditionJuridicaController {
     @GetMapping("/juridicaCondition")
     public String getConditionsJuridica(Model model){
         //model.addAttribute("activePage", "info");
-        return "juridicaCondition";
+        return "mainMenu/maintainMenu//juridicaCondition";
     }
 }

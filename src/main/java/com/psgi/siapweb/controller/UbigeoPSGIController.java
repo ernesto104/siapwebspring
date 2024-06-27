@@ -11,7 +11,7 @@ public class UbigeoPSGIController {
     @GetMapping("/ubigeoPSGI")
     public String getUbigeoPSGI(Model model){
         //model.addAttribute("activePage", "info");
-        return "ubigeoPSGI";
+        return "mainMenu/maintainMenu/ubigeoPSGI";
     }
 
     /*@GetMapping({"/mainMenu"})
