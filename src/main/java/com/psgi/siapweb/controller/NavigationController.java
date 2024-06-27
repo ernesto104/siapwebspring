@@ -26,7 +26,7 @@ public class NavigationController {
     @GetMapping({"/mainMenu"})
     public String getMainMenu(Model model){
         model.addAttribute("activePage", "mainMenu");
-        return "/mainMenu";
+        return "/mainMenu/mainMenu";
     }
 
     @GetMapping("/maintainMenu")
