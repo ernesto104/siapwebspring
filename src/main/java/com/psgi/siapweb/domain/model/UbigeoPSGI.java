@@ -16,25 +16,35 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "ubigeo_psgi")
+@Table(name = "demarcacion")
 public class UbigeoPSGI {
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id_demarcacion")
     Long id;
 
+    @Column(name = "vc_descripcion")
+    String demarcacion;
 
-    String codigo_region;
-
-    String codigo_area;
+    @Column(name = "vc_codigo")
+    String codigo;
     
-    String codigo_zona;
+    @Column(name = "vc_usuario_creacion")
+    String usuario_creacion;
 
-    String codigo_sector;
+    @Column(name = "dt_fecha_creacion")
+    String fecha_creacion;
 
-    String codigo_grupo;
+    @Column(name = "vc_usuario_modificacion")
+    String usuario_modificacion;
 
-    String nombre;
+    @Column(name = "dt_fecha_inicio_vigencia")
+    String fecha_inicio_vigencia;
 
+    @Column(name = "dt_fecha_fin_vigencia")
+    String fecha_fin_vigencia;
+
+    @Column(name = "in_estado")
     String estado;
 
 }
