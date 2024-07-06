@@ -17,7 +17,7 @@
 <main role="main" class="">
     <div class="container-page-register-form align-items-center ">
         <!--<div class="jumbotron">-->
-            <div class="container text-center" style="max-width: 500px;">
+            <div class="container text-center" style="max-width: 1000px;">
                 <!--<h1 class="display-4 ">Info</h1> --><!-- para padding boostrap ( class="pt-5")-->
                 <h1 class="display-5 ">Registro de Datos Personales</h1> <!--para margin boostrap  ( class="mt-5") (pero se le aplica a toda la hoja en general)-->
             <!--</div>-->
@@ -31,7 +31,16 @@
                 </div>-->
             </div> 
             <form class="needs-validation">
-                <div class="form-row mt-5">
+              <div class="form-row mt-5">
+                <div class="form-inline col-md-4 mb-4">
+                  <label for="validationCustom01" class="mr-sm-2">Buscar por Nombre: </label>
+                  <input type="text" class="form-control" name="Nombre Completo" placeholder="Nombre Completo"  required>
+                    <div class="valid-feedback">
+                      Por favor agrega un nombre válido.
+                    </div>
+                </div>
+                </div>
+                <div class="form-row mt-5" hidden>
                   <div class="form-inline col-md-4 mb-4">
                     <label for="validationCustom01" class="mr-sm-2">Region/Territorio: </label>
                     <select id="validationCustom01" class="form-control col-md-6">
@@ -44,7 +53,7 @@
 
                 </div>
                 
-                <div class="form-row">
+                <div class="form-row" hidden>
                   <div class=" form-inline col-md-4 mb-4">
 
                     <label for="validationCustom04" class="mr-sm-5">Zona</label>
@@ -94,22 +103,22 @@
 
             </form>
 
-            <div style="max-height: 350px;  overflow:auto;">
+            <div style="max-height: 550px;  overflow:auto;">
               <table class="table table-hover table-bordered" id="table">
                   <thead class="thead-dark">
                     <tr >
-                      <th style="position: sticky; top: 0;" scope="col" >Apellido Paterno</th>
-                      <th style="position: sticky;top: 0;" scope="col" class="col-3">Apellido Materno</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Nombre</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-3">Tipo</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Documento</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Region/Territorio</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Area</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Zona</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Sector</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Grupo</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Estado</th>
-                      <th style="position: sticky;top: 0;"scope="col"  class="col-1"></th>
+                      <th style="position: sticky; top: 0; z-index: 10;" scope="col" >Apellido Paterno</th>
+                      <th style="position: sticky;top: 0; z-index: 10;" scope="col" class="col-3">Apellido Materno</th>
+                      <th style="position: sticky;top: 0; z-index: 10;"scope="col" class="col-1">Nombre</th>
+                      <th style="position: sticky;top: 0; z-index: 10;"scope="col" class="col-3">Tipo</th>
+                      <th style="position: sticky;top: 0; z-index: 10;"scope="col" class="col-1">Documento</th>
+                      <th style="position: sticky;top: 0; z-index: 10;"scope="col" class="col-1">Region/Territorio</th>
+                      <th style="position: sticky;top: 0; z-index: 10;"scope="col" class="col-1">Area</th>
+                      <th style="position: sticky;top: 0; z-index: 10;"scope="col" class="col-1">Zona</th>
+                      <th style="position: sticky;top: 0; z-index: 10;"scope="col" class="col-1">Sector</th>
+                      <th style="position: sticky;top: 0; z-index: 10;"scope="col" class="col-1">Grupo</th>
+                      <th style="position: sticky;top: 0; z-index: 10;"scope="col" class="col-1">Estado</th>
+                      <th style="position: sticky;top: 0; z-index: 10;"scope="col"  class="col-1"></th>
                     </tr>
                   </thead>
                   <tbody>

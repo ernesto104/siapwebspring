@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "demarcacion")
-public class UbigeoPSGI {
+public class Demarcacion {
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id_demarcacion")
@@ -29,6 +29,12 @@ public class UbigeoPSGI {
     @Column(name = "vc_codigo")
     String codigo;
     
+    @Column(name = "id_dg_nivel_demarcacion")
+    int nivel_demarcacion;
+
+    @Column(name = "id_demarcacion_padre")
+    long demarcacion_padre;
+
     @Column(name = "vc_usuario_creacion")
     String usuario_creacion;
 
@@ -37,6 +43,9 @@ public class UbigeoPSGI {
 
     @Column(name = "vc_usuario_modificacion")
     String usuario_modificacion;
+
+    @Column(name = "dt_fecha_modificacion")
+    String fecha_modificacion;
 
     @Column(name = "dt_fecha_inicio_vigencia")
     String fecha_inicio_vigencia;

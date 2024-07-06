@@ -115,29 +115,33 @@
 
             </form>
 
-            <div style="max-height: 350px;  overflow:auto;">
+            <div class="table-responsive" style="max-height: 350px;  overflow:auto;">
               <table class="table table-hover table-bordered" id="table">
                   <thead class="thead-dark">
                     <tr >
-                      <th style="position: sticky; top: 0;" scope="col" >Codigo</th>
-                      <th style="position: sticky;top: 0;" scope="col" class="col-3">Region/Territorio</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Area</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-3">Zona</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Sector</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Grupo</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Estado</th>
-                      <th style="position: sticky;top: 0;"scope="col"  class="col-1"></th>
+                      <th style="position: sticky; top: 0;z-index: 10;" scope="col" >Codigo</th>
+                      <th style="position: sticky;top: 0;z-index: 10;" scope="col" >Region/Territorio</th>
+                      <th style="position: sticky;top: 0;z-index: 10;"scope="col" >Area</th>
+                      <th style="position: sticky;top: 0;z-index: 10;"scope="col" >Zona</th>
+                      <th style="position: sticky;top: 0;z-index: 10;"scope="col" >Sector</th>
+                      <th style="position: sticky;top: 0;z-index: 10;"scope="col" >Grupo</th>
+                      <th style="position: sticky;top: 0;z-index: 10;"scope="col" >Estado</th>
+                      <th style="position: sticky;top: 0;z-index: 10;"scope="col"  ></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr th:each="td: ${typeDocuments}">
-                      <th scope="row" th:text= " ${td.tipo_documento}">>PAS</th>
-                      <td th:text= "${td.descripcion}" th:attr="id=${td.id}" th:value="${td.id}"> </td>
-                      <td th:text= "${td.estado}"> 
+                    <tr th:each="demarcation: ${demarcaciones}">
+                      <th scope="row" th:text= " ${demarcation.id}">>PAS</th>
+                      <td th:text= "${demarcation.region}" th:attr="id=${demarcation.id}" th:value="${demarcation.id}"> </td>
+                      <td th:text= "${demarcation.area}"> 
+                      <td th:text= "${demarcation.zona}"> 
+                      <td th:text= "${demarcation.sector}"> 
+                      <td th:text= "${demarcation.grupo}"></td>
+                      <td th:text= "${demarcation.estado}"> 
                       <td>
                           <div class="form-check">
-                            <input type="radio" class="form-check-input" name="exampleRadios" th:value="${td.id}" th:onclick="">
-                            <a th:href='@{/editTypeDocument/} + ${td.id}' class="btn btn-info">Editar</a>
+                            <input type="radio" class="form-check-input" name="exampleRadios" th:value="${demarcation.id}" th:onclick="">
+                            <a th:href='@{/editTypeDocument/} + ${demarcation.id}' class="btn btn-info">Editar</a>
                           </div>
                       </td>  
                       </td>
