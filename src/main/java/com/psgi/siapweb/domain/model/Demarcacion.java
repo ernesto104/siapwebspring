@@ -1,10 +1,15 @@
 package com.psgi.siapweb.domain.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -55,5 +60,9 @@ public class Demarcacion {
 
     @Column(name = "in_estado")
     String estado;
+
+
+    @OneToMany(mappedBy = "demarcacion", cascade = CascadeType.ALL)
+    private List<Persona_Direccion> persona_Direccions = new ArrayList<>();
 
 }
