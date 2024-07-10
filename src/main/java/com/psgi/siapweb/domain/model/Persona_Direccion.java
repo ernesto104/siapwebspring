@@ -2,6 +2,9 @@ package com.psgi.siapweb.domain.model;
 
 import java.util.Date;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,17 +34,20 @@ public class Persona_Direccion {
     @Column(name = "id_persona_direccion")
     Long id;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = true)
+    @OneToOne(cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="id_persona")
     private MaestroPSGI maestroPSGI;
 
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="id_demarcacion")
     private Demarcacion demarcacion;
 
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="id_ubigeo")
     private UbigeoReniec ubigeo;
 

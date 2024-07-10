@@ -1,7 +1,11 @@
 package com.psgi.siapweb.domain.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -44,25 +48,26 @@ public class Demarcacion {
     String usuario_creacion;
 
     @Column(name = "dt_fecha_creacion")
-    String fecha_creacion;
+    Date fecha_creacion;
 
     @Column(name = "vc_usuario_modificacion")
     String usuario_modificacion;
 
     @Column(name = "dt_fecha_modificacion")
-    String fecha_modificacion;
+    Date fecha_modificacion;
 
     @Column(name = "dt_fecha_inicio_vigencia")
-    String fecha_inicio_vigencia;
+    Date fecha_inicio_vigencia;
 
     @Column(name = "dt_fecha_fin_vigencia")
-    String fecha_fin_vigencia;
+    Date fecha_fin_vigencia;
 
     @Column(name = "in_estado")
     String estado;
 
 
     @OneToMany(mappedBy = "demarcacion", cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Persona_Direccion> persona_Direccions = new ArrayList<>();
 
 }

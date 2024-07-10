@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -49,17 +52,17 @@ public class UbigeoReniec {
     @Column(name = "vc_descripcion")
     String departament;
 
-    @Column(name = "int_dg_nivel")
+    @Column(name = "id_dg_nivel")
     int dg_nivel;
 
-    @Column(name = "int_ubigeo_padre")
+    @Column(name = "id_ubigeo_padre")
     int ubigeo_padre;
 
     @Column(name = "vc_codigo")
     String codigo;
 
-    @Column(name = "int_estado")
-    String estado;
+    @Column(name = "in_estado")
+    int estado;
 
 
     @Column(name = "vc_usuario_creacion")
@@ -69,12 +72,13 @@ public class UbigeoReniec {
     @Column(name = "dt_fecha_creacion")
     Date fecha_creacion;
 
-    @Column(name = "dt_usuario_modificacion")
-    Date usuario_modificacion;
+    @Column(name = "vc_usuario_modificacion")
+    String usuario_modificacion;
 
     @Column(name = "dt_fecha_modificacion")
     Date fecha_modificacion;
 
     @OneToMany(mappedBy = "ubigeo", cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Persona_Direccion> persona_Direccions = new ArrayList<>();
 }

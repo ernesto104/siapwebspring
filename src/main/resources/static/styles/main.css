@@ -51,3 +51,27 @@ body .container-page-register-form {
   padding-right: 50px;
   padding-top: 30px;
 }
+
+/**************/
+/*table {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+
+thead {
+  flex: 0 0 auto;
+}
+
+tbody {
+  flex: 1 1 auto;
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+tr {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}*/

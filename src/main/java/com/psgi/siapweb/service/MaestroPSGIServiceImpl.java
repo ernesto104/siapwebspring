@@ -19,7 +19,8 @@ public class MaestroPSGIServiceImpl implements MaestroPSGIService{
     @Override
     public MaestroPSGI getMaestroPSGIById(Long id_documento) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getMaestroPSGIById'");
+        return maestroPSGIRepository.findById(id_documento).orElse(null);
+       // throw new UnsupportedOperationException("Unimplemented method 'getMaestroPSGIById'");
     }
 
     @Override
@@ -30,13 +31,14 @@ public class MaestroPSGIServiceImpl implements MaestroPSGIService{
     }
 
     @Override
-    public MaestroPSGI createMaestroPSGI(MaestroPSGI typeDocument) {
+    public MaestroPSGI createMaestroPSGI(MaestroPSGI maestroPsgi) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createMaestroPSGI'");
+        return maestroPSGIRepository.save(maestroPsgi);
+        //throw new UnsupportedOperationException("Unimplemented method 'createMaestroPSGI'");
     }
 
     @Override
-    public MaestroPSGI editMaestroPSGIById(Long id_documento, MaestroPSGI typeDocument) {
+    public MaestroPSGI editMaestroPSGIById(Long id_documento, MaestroPSGI maestroPsgi) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'editMaestroPSGIById'");
     }

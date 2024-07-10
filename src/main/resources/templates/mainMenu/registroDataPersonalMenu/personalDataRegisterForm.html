@@ -6,8 +6,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link th:href="@{styles/css/jasny-bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{styles/main.css}" rel="stylesheet"/>
+    <link th:href="@{../styles/css/jasny-bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{../styles/main.css}" rel="stylesheet"/>
 </head>
 <body class="flex-column h-100">
 
@@ -29,7 +29,7 @@
                     
                 </div>-->
             </div> 
-            <form>
+            <form th:object="${registerData}">
               <div class="row">
                 <div class="col-md-9">
                   <div class="form-row mt-5">
@@ -64,8 +64,8 @@
                   </div> 
                   <div class="form-row">
                     <div class="form-group col-md-4">
-                      <label for="inputCity">Región/Territorio: (*)</label>
-                      <select id="inputState" class="form-control">
+                      <label for="inputRegion">Región/Territorio: (*)</label>
+                      <select id="inputRegion" class="form-control" name="selectRegion">
                         <option selected>Region</option>
                         <option>...</option>
                       </select>
@@ -149,7 +149,7 @@
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <label for="inputCity">Apellido Paterno: (*)</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="Apellido Paterno">
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Apellido Paterno" th:field="*{ape_paterno}">
                 </div>
                 <div class="col-md-3"></div>
                 <div class="form-group col-md-3">
@@ -171,7 +171,7 @@
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <label for="inputCity">Apellido Materno: (*)</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="Apellido Materno">
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Apellido Materno" th:field="*{ape_materno}">
                 </div>
                 <div class="col-md-3"></div>
                 <div class="form-group col-md-3">
@@ -192,7 +192,7 @@
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <label for="inputCity">Nombre: (*)</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="Nombre">
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Nombre" th:field="*{nombres}">
                 </div>
                 <div class="col-md-3"></div>
                 <div class="form-group col-md-3">
@@ -208,7 +208,7 @@
               <div class="form-row">
                 <div class="form-group col-md-3">
                   <label for="inputCity">Direccion: (*)</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="Direccion Detallada">
+                  <input type="text" class="form-control" id="inputAddress"  placeholder="Direccion Detallada" th:field="*{persona_Direccion.direccion}">
                 </div>
                 <div class="col-md-3"></div>
                 <div class="form-group col-md-3">
@@ -314,10 +314,53 @@
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js">
 </script>
 <!-- Bootstrap JS -->
-<script th:src="@{styles/js/jasny-bootstrap.min.js}"></script>
-<script th:src="@{config/reloj.js}"></script>
-<script>
-  $().dropdown('update', function() {})
+<script  th:src="@{../styles/js/jasny-bootstrap.min.js}"></script>
+<script  th:src="@{../config/reloj.js}"></script>
+<script th:inline ="javascript">
+  //$().dropdown('update', function() {})
+  
+
+  let demarcacions = /*[[${demarcacions}]]*/ [];
+  //let demarcacionItem = demarcacions.codigo;
+  let demarcacionLength = demarcacions.length
+  
+  let territorios = []
+  let areas = []
+  let zonas = []
+  let sector = []
+  let grupos = []
+  let temporal_array = []
+
+  
+  demarcacions.forEach(element => {
+    
+    this.temporal_array = []
+
+    if (element[0].length==4) {
+      temporal_array.push(element);
+      console.log(element[0].length)
+      //console.log(temporal_array)
+    }
+    
+    
+  });
+  territorios = temporal_array;
+  console.log(territorios)
+
+
+////function to add territorios
+  var selectRegion = document.getElementsByName("selectRegion")[0];
+  if (territorios.length!=0){
+      selectRegion.length = 0
+      for (value in territorios) {
+        
+        var option = document.createElement("option");
+        option.text = territorios[value][1];
+        option.value = territorios[value][0];
+        selectRegion.add(option);
+      }
+  }
+  
 
 </script>
 </body>

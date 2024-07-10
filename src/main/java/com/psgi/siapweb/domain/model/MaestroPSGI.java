@@ -34,7 +34,7 @@ public class MaestroPSGI {
     String ape_materno;
 
     @Column(name = "vc_ape_paterno")
-    String ape_paterno;
+    private String ape_paterno;
 
     @Column(name = "vc_nombres")
     String nombres;
