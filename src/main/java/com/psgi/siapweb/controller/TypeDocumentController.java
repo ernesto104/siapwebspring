@@ -27,7 +27,7 @@ public class TypeDocumentController {
     @PostMapping(value="/saveTypeDocument"/* , params="action=saveTypeDocument"*/)
 	public String saveTypeDocument(@ModelAttribute("typeDocument") TypeDocument typeDocument) { // Nombre de typeDocument como referencia
 		typeDocumentService.createTypeDocument(typeDocument);
-		return "redirect:/typedocument";
+		return "redirect:/typedocument";  // put url in GetMapping, not location of file
 	}
 	
 
