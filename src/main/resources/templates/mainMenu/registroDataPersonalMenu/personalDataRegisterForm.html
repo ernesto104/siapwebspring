@@ -35,7 +35,7 @@
                   <div class="form-row mt-5">
                     <div class="form-group form-inline col-md-4">
                       <label for="inputEmail4" class="mr-sm-2">Tipo Documento: (*)</label>
-                      <input type="email" class="form-control col-md-4" id="inputEmail4" placeholder="Codigo">
+                      <input type="text" class="form-control col-md-4"  placeholder="Codigo" th:field="*{tipo_documento.vc_descripcion_largo}">
                     </div>
                     <div class="form-group form-inline col-md-4">
                       <label for="inputPassword4" class="mr-sm-2">Tit. Gohonzon: (*)</label>
@@ -58,7 +58,7 @@
                   <div class="form-row">
                     <div class="form-group col-md-4">
                       <label for="inputAddress">  Nro Documento: (*)</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="Numero Completo del codigo">
+                      <input type="text" class="form-control" id="inputAddress" placeholder="Numero Completo del codigo" th:field="*{nro_documento}">
                     </div>
                   
                   </div> 
@@ -197,9 +197,15 @@
                 <div class="col-md-3"></div>
                 <div class="form-group col-md-3">
                   <label for="inputCity">Nivel Educativo: (*)</label>
-                  <select id="inputState" class="form-control">
-                    <option selected>Basico</option>
-                    <option>Superior</option>
+                  <select id="inputState" class="form-control"  th:field="*{id_dg_grado_instruccion}">
+                    <option th:each="level : ${educations}"
+                            th:value="${level.id}"
+                            th:text="${level.vc_descripcion_largo}"
+
+                            th:selected="${registerData.id_dg_grado_instruccion.id==level.id}"></option>
+                           
+                    <!--<option selected>Basico</option>
+                    <option>Superior</option>-->
                   </select>
                 </div>
                 
@@ -319,7 +325,11 @@
 <script th:inline ="javascript">
   //$().dropdown('update', function() {})
   
-
+  let edu = /*[[${registerData.id_dg_grado_instruccion.id}]]*/ []
+  let educations = /*[[${educations}]]*/ []
+  console.log(educations)
+  let registerData = /*[[${registerData.tipo_documento.vc_descripcion_largo}]]*/ []
+  console.log(registerData)
   let demarcacions = /*[[${demarcacions}]]*/ [];
   //let demarcacionItem = demarcacions.codigo;
   let demarcacionLength = demarcacions.length

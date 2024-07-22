@@ -8,7 +8,7 @@
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
   
-    <link th:href="@{styles/main.css}" rel="stylesheet"/>
+    <link th:href="@{/styles/main.css}" rel="stylesheet"/>
 </head>
 <body class="flex-column h-100">
 
@@ -30,26 +30,26 @@
                     
                 </div>-->
             </div> 
-            <form class="needs-validation">
+            <form class="needs-validation"  th:action="@{/saveLevelEducation}" th:object="${levelEducationItem}" method="post">
 
                 <div class="form-row  mt-5">
                       <div class="col-md-8 mb-3">
                         <label for="validationCustom04" class="mr-sm-3">Codigo :(*) </label>
-                        <input type="text"  class="form-control col-md-2 " id="tipo_documento" placeholder="Codigo" required>
+                        <input type="text"  class="form-control col-md-2 " id="tipo_documento" placeholder="Codigo" th:field="*{vc_descripcion_corto}"required>
                       </div>
                   </div>
                   <div class="form-row">
                     <div class=" col-md-6 mb-3">
                       <label for="validationCustom04" class="mr-sm-4">Nivel Educativo:&nbsp;(*)</label>
-                      <input type="text"  class="form-control col-md-7 " id="descripcion" placeholder="Nivel Educativo" required>
+                      <input type="text"  class="form-control col-md-7 " id="descripcion" placeholder="Nivel Educativo" th:field="*{vc_descripcion_largo}" required>
                     </div>
                     <div class="col-md-4 mb-3">
                       <label for="validationCustom04"  class="mr-sm-3">Estado (*)</label>
                       <div class="span"></div>
-                      <select class="custom-select col-md-5" aria-label="Default select example" id="estado" required>
+                      <select class="custom-select col-md-5" aria-label="Default select example" id="estado" th:field="*{in_estado}" required>
                         <!--<option selected>Seleccionar Estado</option> -->
-                        <option value="Activo" selected>Activo</option>
-                        <option value="Inactivo">Inactivo</option>
+                        <option value="1" selected>Activo</option>
+                        <option value="0">Inactivo</option>
                       </select>
 
                     
@@ -60,7 +60,7 @@
 
                 <row class="justify-content-center">
                   <button class="btn btn-primary mx-4 my-3 col-md-2" type="submit" >Agregar</button>
-                  <button class="btn btn-primary mx-4 my-3 col-md-2" type="button" th:onclick="|window.location.href='@{/editTypeDocument/}'|" id="btn-modificar-doc" disabled>Modificar</button>  
+                  <button class="btn btn-primary mx-4 my-3 col-md-2" type="button" th:formaction="@{/editLevelEducation/{id}(id=${levelEducationItem.id})}" id="btn-modificar-doc" th:attr ="disabled=${levelEducationItem.id != null} ? null : 'disabled'">Modificar</button>  
                   <button class="btn btn-primary mx-4 my-3 col-md-2" type="button" th:formaction="@{/cancelTypeDocument}" id="btn-limpiar" >Limpiar</button>
                   <button class="btn btn-primary mx-4 my-3 col-md-2 btn btn-danger" type="button" th:onclick="|window.location.href='@{/maintainMenu}'|" data-mdb-ripple-init >Salir</button>
                 </row>
@@ -75,27 +75,27 @@
             <div style="max-height: 350px;  overflow:auto;">
               <table class="table table-hover " id="table">
                   <thead class="thead-dark">
-                    <tr >
-                      <th style="position: sticky; top: 0;" scope="col" class="col-2" >Codigo</th>
-                      <th style="position: sticky;top: 0;" scope="col" >Descripcion</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Estado</th>
-                      <th style="position: sticky;top: 0;"scope="col"  class="col-1"></th>
+                    <tr style="position: sticky;top: 0; z-index: 10;">
+                      <th scope="col" class="col-2" >Codigo</th>
+                      <th scope="col" >Descripcion</th>
+                      <th scope="col" class="col-1">Estado</th>
+                      <th scope="col"  class="col-1"></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr th:each="td: ${typeDocuments}">
-                      <th scope="row" th:text= " ${td.tipo_documento}">>PAS</th>
-                      <td th:text= "${td.descripcion}" th:attr="id=${td.id}" th:value="${td.id}"> </td>
-                      <td th:text= "${td.estado}"> 
+                    <tr th:each="lvleduc: ${levelEducationList}">
+                      <th scope="row" th:text= " ${lvleduc.vc_descripcion_corto}">>PAS</th>
+                      <td th:text= "${lvleduc.vc_descripcion_largo}" th:attr="id=${lvleduc.id}" th:value="${lvleduc.id}"> </td>
+                      <td th:text= "${lvleduc.in_estado} ? Activo : Inactivo"> 
                       <td>
                           <div class="form-check">
-                            <input type="radio" class="form-check-input" name="exampleRadios" th:value="${td.id}" th:onclick="">
-                            <a th:href='@{/editTypeDocument/} + ${td.id}' class="btn btn-info">Editar</a>
+                            <input type="radio" class="form-check-input" name="exampleRadios" th:value="${lvleduc.id}" th:onclick="|window.location.href='@{/levelEducation/{id}(id=${lvleduc.id})}'|" th:attr ="checked=${lvleduc.id} ==${levelEducationItem.id} ? 'checked' : null">
+                            <a th:href='@{/levelEducation/} + ${lvleduc.id}' class="btn btn-info" hidden>Editar</a>
                           </div>
                       </td>  
                       </td>
                     </tr>
-                    <tr >
+                    <tr hidden>
                       <th scope="row">01</th>
                       <td>Inicial</td>
                       <td>Activo</td>
@@ -105,7 +105,7 @@
                         </div>
                       </td>
                     </tr>
-                    <tr >
+                    <tr hidden>
                       <th scope="row">02</th>
                       <td>Primaria</td>
                       <td>Activo</td>
@@ -115,7 +115,7 @@
                         </div>
                       </td>
                     </tr>
-                    <tr >
+                    <tr hidden>
                       <th scope="row">03</th>
                       <td>Secunadaria</td>
                       <td>Activo</td>
@@ -150,7 +150,7 @@
 <script
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js">
 </script>
-<script th:src="@{config/reloj.js}"></script>
+<script th:src="@{/config/reloj.js}"></script>
 
 
 
@@ -176,7 +176,7 @@
           descripcion.value = '';
 
           var estado = document.getElementById('estado');
-          estado.value = 'Activo';
+          estado.value = '1';
 
           document.getElementById("btn-modificar-doc").disabled=true;
 

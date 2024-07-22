@@ -30,14 +30,15 @@
                     
                 </div>-->
             </div> 
-            <form class="needs-validation">
-              <div class="form-row mt-5">
-                <div class="form-inline col-md-4 mb-4">
+            <form class="needs-validation" th:action="@{/registerPersonalDataTable}">
+              <div class="form-row mt-5" >
+                <div class="form-inline col-md-12 mb-4">
                   <label for="validationCustom01" class="mr-sm-2">Buscar por Nombre: </label>
-                  <input type="text" class="form-control" name="Nombre Completo" placeholder="Nombre Completo"  required>
+                  <input type="text" class="form-control col-md-8" name="nombreCompleto"  placeholder="Nombre Completo"  >
                     <div class="valid-feedback">
                       Por favor agrega un nombre válido.
                     </div>
+                  <button class="btn btn-primary mx-2 my-3 col-md-2" type="submit" >Buscar</button>
                 </div>
                 </div>
                 <div class="form-row mt-5" hidden>
@@ -126,7 +127,8 @@
                       <th scope="row" th:text= " ${registrounit.ape_paterno}">>PAS</th>
                       <td th:text= "${registrounit.ape_materno}" th:attr="id=${registrounit.id}" th:value="${registrounit.id}"> </td>
                       <td th:text= "${registrounit.nombres}"> 
-                      <td th:text= "${registrounit.tipo_documento}"> <!--tipo-->
+                      <td >DNI </td>
+                      <!--<td th:text= "${registrounit.tipo_documento.id}">--> <!--tipo-->
                       <td th:text= "${registrounit.nro_documento}"> <!--documento-->
                       <td th:text= "${registrounit.nro_documento}"> <!--Region-->
                       <td th:text= "${registrounit.nro_documento}"> <!--Area-->
@@ -142,7 +144,7 @@
                       </td>  
                       </td>
                     </tr>
-                    <tr>
+                    <tr hidden>
                       <th scope="row">12</th>
                       <td>La Libertad</td>
                       <td></td>
@@ -156,7 +158,7 @@
                         </div>
                       </td>
                     </tr>
-                    <tr >
+                    <tr hidden>
                       <th scope="row">1201</th>
                       <td>La Libertad</td>
                       <td>Trujillo</td>
@@ -170,7 +172,7 @@
                         </div>
                       </td>
                     </tr>
-                    <tr >
+                    <tr hidden>
                       <th scope="row">120101</th>
                       <td>La Libertad</td>
                       <td>Trujillo</td>
@@ -215,14 +217,14 @@
 
 
 <!-- Bootstrap JS -->
-<script>
+<script th:inline="javascript">
   //$().dropdown('update', function() {})
 
       //cleann all sellection with limpiar button
       /*$(document).on('click', '#btn-limpiar', function(e) {
           $('#table tr').removeClass('table-active');
       });*/
-
+      
       //clean form with limpiar button
       document.getElementById("btn-limpiar").addEventListener('click', function () {
           var idTypeDocument = /*[[${message}]]*/ "";
@@ -252,7 +254,7 @@
 
           
 
-                
+              
      
 
 // to Fill the form with datatable

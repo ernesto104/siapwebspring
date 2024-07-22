@@ -8,7 +8,7 @@
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
   
-    <link th:href="@{styles/main.css}" rel="stylesheet"/>
+    <link th:href="@{/styles/main.css}" rel="stylesheet"/>
 </head>
 <body class="flex-column h-100">
 
@@ -30,26 +30,26 @@
                     
                 </div>-->
             </div> 
-            <form class="needs-validation">
+            <form class="needs-validation" th:action="@{/saveDivision}" th:object="${divisionItem}" method="post">
 
                 <div class="form-row  mt-5">
                       <div class="col-md-6 mb-3">
                         <label for="validationCustom04" class="mr-sm-3">Codigo de Division: (*) </label>
-                        <input type="text"  class="form-control col-md-2 " id="tipo_documento" placeholder="DC">
+                        <input type="text"  class="form-control col-md-2 " id="tipo_documento" placeholder="DC" th:field="*{vc_descripcion_corto}">
                       </div>
                       <div class="col-md-4 mb-3">
                         <label for="validationCustom04" class="mr-sm-3">Edad Mínima: (*) </label>
-                        <input type="text"  class="form-control col-md-5 " id="tipo_documento" placeholder="Edad min.">
+                        <input type="text"  class="form-control col-md-5 " id="edad_minima" placeholder="Edad min.">
                       </div>
                   </div>
                   <div class="form-row">
                     <div class=" col-md-6 mb-3">
                       <label for="validationCustom04" class="mr-sm-4">Denominación División:&nbsp;(*)</label>
-                      <input type="text"  class="form-control col-md-7 " id="descripcion" placeholder="Division Caballeros">
+                      <input type="text"  class="form-control col-md-7 " id="descripcion" placeholder="Division Caballeros" th:field="*{vc_descripcion_largo}">
                     </div>
                     <div class="col-md-4 mb-3">
                       <label for="validationCustom04" class="mr-sm-3">Edad Mínima: (*) </label>
-                      <input type="text"  class="form-control col-md-5 " id="tipo_documento" placeholder="Edad max.">
+                      <input type="text"  class="form-control col-md-5 " id="edad_maxima" placeholder="Edad max.">
                     </div>
 
                 </div>
@@ -61,10 +61,10 @@
                   <div class="col-md-4 mb-3">
                     <label for="validationCustom04"  class="mr-sm-3">Estado (*)</label>
                     <div class="span"></div>
-                    <select class="custom-select col-md-5" aria-label="Default select example" id="estado">
+                    <select class="custom-select col-md-5" aria-label="Default select example" id="estado" th:field="*{in_estado}">
                       <!--<option selected>Seleccionar Estado</option> -->
-                      <option value="Activo" selected>Activo</option>
-                      <option value="Inactivo">Inactivo</option>
+                      <option value="1" selected>Activo</option>
+                      <option value="0">Inactivo</option>
                     </select>
 
                   
@@ -75,7 +75,7 @@
 
                 <row class="justify-content-center">
                   <button class="btn btn-primary mx-4 my-3 col-md-2" type="submit" >Agregar</button>
-                  <button class="btn btn-primary mx-4 my-3 col-md-2" type="button" th:onclick="|window.location.href='@{/editTypeDocument/}'|" id="btn-modificar-doc" disabled>Modificar</button>  
+                  <button class="btn btn-primary mx-4 my-3 col-md-2" type="button" th:formaction="@{/editDivision/{id}(id=${divisionItem.id})}" id="btn-modificar-doc" th:attr ="disabled=${divisionItem.id != null} ? null : 'disabled'">Modificar</button>  
                   <button class="btn btn-primary mx-4 my-3 col-md-2" type="button" th:formaction="@{/cancelTypeDocument}" id="btn-limpiar" >Limpiar</button>
                   <button class="btn btn-primary mx-4 my-3 col-md-2 btn btn-danger" type="button" th:onclick="|window.location.href='@{/maintainMenu}'|" data-mdb-ripple-init >Salir</button>
                 </row>
@@ -90,27 +90,27 @@
             <div style="max-height: 350px;  overflow:auto;">
               <table class="table table-hover " id="table">
                   <thead class="thead-dark">
-                    <tr >
-                      <th style="position: sticky; top: 0;" scope="col" class="col-2" >Codigo</th>
-                      <th style="position: sticky;top: 0;" scope="col" >Division</th>
-                      <th style="position: sticky;top: 0;"scope="col" class="col-1">Estado</th>
-                      <th style="position: sticky;top: 0;"scope="col"  class="col-1"></th>
+                    <tr style="position: sticky; top: 0; z-index: 10;">
+                      <th scope="col" class="col-2" >Codigo</th>
+                      <th scope="col" >Division</th>
+                      <th scope="col" class="col-1">Estado</th>
+                      <th scope="col"  class="col-1"></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr th:each="td: ${typeDocuments}">
-                      <th scope="row" th:text= " ${td.tipo_documento}">>PAS</th>
-                      <td th:text= "${td.descripcion}" th:attr="id=${td.id}" th:value="${td.id}"> </td>
-                      <td th:text= "${td.estado}"> 
+                    <tr th:each="division: ${divisionList}">
+                      <th scope="row" th:text= " ${division.vc_descripcion_corto}">>PAS</th>
+                      <td th:text= "${division.vc_descripcion_largo}" th:attr="id=${division.id}" th:value="${division.id}"> </td>
+                      <td th:text= "${division.in_estado} ? Activo : Inactivo"> 
                       <td>
                           <div class="form-check">
-                            <input type="radio" class="form-check-input" name="exampleRadios" th:value="${td.id}" th:onclick="">
-                            <a th:href='@{/editTypeDocument/} + ${td.id}' class="btn btn-info">Editar</a>
+                            <input type="radio" class="form-check-input" name="exampleRadios" th:value="${division.id}" th:onclick="|window.location.href='@{/division/{id}(id=${division.id})}'|" th:attr ="checked=${division.id} ==${divisionItem.id} ? 'checked' : null">
+                            <a th:href='@{/editDivision/} + ${division.id}' class="btn btn-info" hidden>Editar</a>
                           </div>
                       </td>  
                       </td>
                     </tr>
-                    <tr >
+                    <tr hidden>
                       <th scope="row">DC</th>
                       <td>DIVISION CABALLEROS</td>
                       <td>Activo</td>
@@ -120,7 +120,7 @@
                         </div>
                       </td>
                     </tr>
-                    <tr >
+                    <tr hidden>
                       <th scope="row">DF</th>
                       <td>DIVISION FEMENINA</td>
                       <td>Activo</td>
@@ -129,8 +129,8 @@
                           <input type="radio" class="form-check-input" id="customCheck2" name="exampleRadios">
                         </div>
                       </td>
-                    </tr>
-                    <tr >
+                    </tr >
+                    <tr hidden>
                       <th scope="row">DJM</th>
                       <td>DIVISION JUVENIL MASCULINA</td>
                       <td>Activo</td>
@@ -140,7 +140,7 @@
                         </div>
                       </td>
                     </tr>
-                    <tr >
+                    <tr hidden>
                       <th scope="row">DJF</th>
                       <td>DIVISION JUVENIL FEMENINA</td>
                       <td>Activo</td>
@@ -175,7 +175,7 @@
 <script
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js">
 </script>
-<script th:src="@{config/reloj.js}"></script>
+<script th:src="@{/config/reloj.js}"></script>
 
 
 
@@ -201,7 +201,7 @@
           descripcion.value = '';
 
           var estado = document.getElementById('estado');
-          estado.value = 'Activo';
+          estado.value = '1';
 
           document.getElementById("btn-modificar-doc").disabled=true;
 

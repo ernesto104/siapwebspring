@@ -13,30 +13,37 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "profesion")
-public class Profesion extends AuditableEntityClass{
+@Table(name = "general")
+public class General {
 
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "id_profesion")
+    @Column(name = "id_general")
     Long id;
 
     @Column(name = "vc_descripcion")
     String vcdescripcion;
 
+
+    short bt_interno;
+
     int in_estado;
 
     String vc_usuario_creacion;
 
-    //Date dt_fecha_creacion;
+
+    Date dt_fecha_creacion;
+
 
     String vc_usuario_modificacion;
 
-    //Date dt_fecha_modificacion;
 
+    Date dt_fecha_modificacion;
 }

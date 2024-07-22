@@ -12,6 +12,8 @@ public interface MaestroPSGIService {
     MaestroPSGI getMaestroPSGIById(Long id_documento);
     List<MaestroPSGI> getAllMaestroPSGI();
 
+    List<MaestroPSGI> getAllMaestroPSGIByCompleteName(String completeName);
+
     MaestroPSGI createMaestroPSGI(MaestroPSGI typeDocument);
 
     MaestroPSGI editMaestroPSGIById(Long id_documento, MaestroPSGI typeDocument);

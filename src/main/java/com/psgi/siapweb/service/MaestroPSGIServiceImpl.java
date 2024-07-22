@@ -49,4 +49,12 @@ public class MaestroPSGIServiceImpl implements MaestroPSGIService{
         throw new UnsupportedOperationException("Unimplemented method 'deleteMaestroPSGI'");
     }
 
+    @Override
+    public List<MaestroPSGI> getAllMaestroPSGIByCompleteName(String completeName) {
+        // TODO Auto-generated method stub
+
+        return maestroPSGIRepository.findByVcnombrecompletoContains(completeName);
+        //throw new UnsupportedOperationException("Unimplemented method 'getAllMaestroPSGIByCompleteName'");
+    }
+
 }

@@ -2,12 +2,18 @@ package com.psgi.siapweb.domain.model;
 
 import java.util.Date;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -39,11 +45,17 @@ public class MaestroPSGI {
     @Column(name = "vc_nombres")
     String nombres;
 
-    @Column(name = "id_dg_sexo")
-    Long sexo;
 
-    @Column(name = "id_dg_tipo_documento")
-    Long tipo_documento;
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name="id_dg_sexo")
+    DetalleGeneral sexo;
+
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name="id_dg_tipo_documento")
+    DetalleGeneral tipo_documento;
 
 
     @Column(name = "vc_nro_documento")
@@ -74,15 +86,27 @@ public class MaestroPSGI {
 
     String vc_lugar_nacimiento;
 
-    Long id_dg_estado_civil;
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name="id_dg_estado_civil")
+    DetalleGeneral id_dg_estado_civil;
 
     Date dt_fecha_matrimonio;
 
-    Long id_dg_grado_instruccion;
+    
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name="id_dg_grado_instruccion")
+    DetalleGeneral id_dg_grado_instruccion;
 
-    Long id_profesion;
 
-    String vc_nombre_completo;
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name="id_profesion")
+    Profesion profesion;
+
+    @Column(name = "vc_nombre_completo")
+    String vcnombrecompleto;
 
 
     String vc_telefono;
